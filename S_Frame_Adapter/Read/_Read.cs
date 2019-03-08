@@ -43,14 +43,14 @@ namespace BH.Adapter.S_Frame
         {
             //Main dispatcher method.
             //Choose what to pull out depending on the type.
-            if (type == typeof(Node))
-                return ReadNodes(ids as dynamic);
-            else if (type == typeof(Bar))
-                return ReadBars(ids as dynamic);
-            else if (type == typeof(ISectionProperty) || type.GetInterfaces().Contains(typeof(ISectionProperty)))
-                return ReadSectionProperties(ids as dynamic);
-            else if (type == typeof(Material))
-                return ReadMaterials(ids as dynamic);
+            //if (type == typeof(Node))
+            //    return ReadNodes(ids as dynamic);
+            //else if (type == typeof(Bar))
+            //    return ReadBars(ids as dynamic);
+            //else if (type == typeof(ISectionProperty) || type.GetInterfaces().Contains(typeof(ISectionProperty)))
+            //    return ReadSectionProperties(ids as dynamic);
+            //else if (type == typeof(Material))
+            //    return ReadMaterials(ids as dynamic);
 
             return new List<IBHoMObject>();
         }

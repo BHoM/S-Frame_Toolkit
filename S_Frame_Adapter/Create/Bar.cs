@@ -54,7 +54,7 @@ namespace BH.Adapter.S_Frame
 
                 lines.Add(TableIdentifiers(bar));
                 lines.Add(TableParameters(bar));
-                //lines.Add(TablePanelLoads(bar));
+                lines.Add(TableSectionalLoads(bar));
 
                 File.WriteAllLines(filePath, lines);
             }
@@ -95,45 +95,10 @@ namespace BH.Adapter.S_Frame
         /***************************************************/
 
         private string TableSectionalLoads(Bar bar)
-        {
-            //Make a fake force for now
-            BarForce barForce = new BarForce
-            {
-                FX = 1,
-                FY = 2,
-                FZ = 3,
-                MX = -4,
-                MY = -5,
-                MZ = -6,
-            };
-            List<BarForce> forces = new List<BarForce> { barForce, barForce, barForce };
-            List<Dictionary<string, string>> tableData = new List<Dictionary<string, string>>();
-            int i = 0;
-            foreach (BarForce bhomForce in forces)
-            {
-                i++;
-                Dictionary<string, string> force = new Dictionary<string, string>
-                {
-                    { "LC", i.ToString(" 0; 0; 0") },
-                    { "Nf", bhomForce.FX.ToString(" 0; 0; 0") },
-                    { "Tf", bhomForce.MX.ToString(" 0; 0; 0") },
-                    { "Vfz", bhomForce.FZ.ToString(" 0; 0; 0") },
-                    { "Mfy", bhomForce.MY.ToString(" 0; 0; 0") },
-                    { "Cmy", " 1" },
-                    { "Vfy", bhomForce.FY.ToString(" 0; 0; 0") },
-                    { "Mfz", bhomForce.MZ.ToString(" 0; 0; 0") },
-                    { "Cmz", " 1" },
-                    { "Pdistr", " 0" },
-                    { "CheckLC", " True" },
-                    { "Load Type", " 1" },
-                    { "Comment", bhomForce.ResultCase.ToString() }
-                };
-                tableData.Add(force);
-            }
-
+        {            
             return "@Object@S-CONCRETE Sectional Loads@" + Environment.NewLine
                     + "@Table@13@" + Environment.NewLine
-                    + PrintSCOTable(tableData)
+                    + "LC	Nf	Tf	Vfz	Mfy	Cmy	Vfy	Mfz	Cmz	Pdistr	CheckLC	Load Type	Comment	AutoGen" + Environment.NewLine
                     + "@EndTable@";
         }
 

@@ -26,6 +26,7 @@ using BH.oM.Structure.Elements;
 using BH.oM.Structure.Properties.Section;
 using BH.oM.Structure.Properties.Surface;
 using BH.oM.Structure.Properties.Constraint;
+using BH.oM.Structure.Results;
 using System;
 using System.Collections.Generic;
 
@@ -69,12 +70,8 @@ namespace BH.Adapter.S_Frame
 
         private static Dictionary<Type, List<Type>> m_DependencyTypes = new Dictionary<Type, List<Type>>
         {
-            {typeof(Bar), new List<Type> { typeof(ISectionProperty), typeof(Node) } },
-            {typeof(ISectionProperty), new List<Type> { typeof(Material) } },
-            {typeof(RigidLink), new List<Type> { typeof(LinkConstraint), typeof(Node) } },
-            {typeof(FEMesh), new List<Type> { typeof(ISurfaceProperty), typeof(Node) } },
-            {typeof(ISurfaceProperty), new List<Type> { typeof(Material) } },
-            {typeof(PanelPlanar), new List<Type> { typeof(ISurfaceProperty) } }
+            {typeof(MeshResult), new List<Type> { typeof(PanelPlanar) } },
+            {typeof(BarResult), new List<Type> { typeof(Bar) } }
         };
 
 
