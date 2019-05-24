@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Structure.Elements;
-using BH.oM.Structure.Properties.Surface;
+using BH.oM.Structure.SurfaceProperties;
 using BH.oM.Adapters.S_Frame;
 
 namespace BH.Engine.S_Frame
@@ -16,7 +16,7 @@ namespace BH.Engine.S_Frame
         /***************************************************/
 
 
-        public static MemberType GetMemberType(PanelPlanar panel)
+        public static MemberType GetMemberType(Panel panel)
         {
             ConstantThickness section = (ConstantThickness)panel.Property;
 
@@ -55,7 +55,7 @@ namespace BH.Engine.S_Frame
 
         /***************************************************/
 
-        public static string GetWallPanelData(PanelPlanar panel)
+        public static string GetWallPanelData(Panel panel)
         {
             string l = "6000";
             string t = "400";

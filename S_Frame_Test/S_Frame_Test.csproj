@@ -53,6 +53,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\BHoM\Build\Geometry_oM.dll</HintPath>
     </Reference>
+    <Reference Include="Physical_oM">
+      <HintPath>..\..\BHoM\Build\Physical_oM.dll</HintPath>
+    </Reference>
     <Reference Include="Results_Engine">
       <HintPath>..\..\BHoM_Engine\Build\Results_Engine.dll</HintPath>
     </Reference>
