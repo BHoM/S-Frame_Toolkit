@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Structure.Elements;
 using BH.oM.Adapters.S_Frame;
-using BH.oM.Structure.Properties.Surface;
-using BH.oM.Structure.Properties.Section;
-using BH.oM.Structure.Properties.Section.Reinforcement;
-using BH.oM.Structure.Properties.Section.ShapeProfiles;
+using BH.oM.Structure.SurfaceProperties;
+using BH.oM.Structure.SectionProperties.Reinforcement;
+using BH.oM.Structure.SectionProperties;
+using BH.oM.Geometry.ShapeProfiles;
 using BH.Engine;
 using BH.Engine.Geometry;
 using BH.Engine.Structure;
@@ -76,7 +76,7 @@ namespace BH.Engine.S_Frame
                 }
             }
         }
-        public static string GetSectionData(PanelPlanar panel)
+        public static string GetSectionData(Panel panel)
         {
             ConstantThickness section = (ConstantThickness)panel.Property;
             return GetWallProfileData(section);

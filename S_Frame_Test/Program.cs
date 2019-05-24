@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BH.oM.Base;
-using BH.oM.Common.Materials;
-using BH.oM.Structure;
 using BH.oM.Structure.Results;
 using BH.oM.Structure.Elements;
-using BH.Adapter;
 using BH.Adapter.S_Frame;
-using BH.oM.Structure.Properties.Section;
-using BH.oM.Structure.Properties.Section.ShapeProfiles;
-using BH.Engine.Structure;
+using BH.oM.Structure.SectionProperties;
+using BH.oM.Structure.MaterialFragments;
 
 namespace S_Frame_Test
 {
@@ -57,13 +52,14 @@ namespace S_Frame_Test
 
         private static Bar CreateBar(String name)
         {
-            Material concrete = BH.Engine.Common.Create.Material("Concrete", MaterialType.Concrete, 1000, 0.3, 0.00012, 400);
+            Concrete concrete = BH.Engine.Structure.Create.Concrete("Concrete");
+            concrete.CylinderStrength = 27579030;
             ISectionProperty section = BH.Engine.Structure.Create.ConcreteRectangleSection(0.9, 0.9, concrete, "mySection");
 
             Bar bar = new Bar();
             bar.Name = name;
-            bar.StartNode = new Node() { Coordinates = new BH.oM.Geometry.CoordinateSystem.Cartesian() { Origin = new BH.oM.Geometry.Point() { X = 0, Y = 0, Z = 0 } } };
-            bar.EndNode = new Node() { Coordinates = new BH.oM.Geometry.CoordinateSystem.Cartesian() { Origin = new BH.oM.Geometry.Point() { X = 0, Y = 0, Z = 10 } } };
+            bar.StartNode = new Node() { Position = new BH.oM.Geometry.Point() { X = 0, Y = 0, Z = 0 } };
+            bar.EndNode = new Node() { Position = new BH.oM.Geometry.Point() { X = 0, Y = 0, Z = 10 } };
             bar.SectionProperty = section;
 
             Console.WriteLine("the bar is called \"" + bar.Name + "\"");
