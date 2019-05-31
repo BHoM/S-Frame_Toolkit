@@ -82,11 +82,11 @@
     <Compile Include="Convert\ToBHoM\Node.cs" />
     <Compile Include="Convert\ToS_Frame\Bar.cs" />
     <Compile Include="Convert\ToS_Frame\Panel.cs" />
+    <Compile Include="Create\BarResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Compute\" />
-    <Folder Include="Create\" />
     <Folder Include="Modify\" />
     <Folder Include="Query\" />
   </ItemGroup>
