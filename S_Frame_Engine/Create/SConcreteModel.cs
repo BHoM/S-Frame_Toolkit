@@ -22,11 +22,20 @@ namespace BH.Engine.S_Frame.Create
         {
             SConcreteModel model = new SConcreteModel();
 
+            String name = "";
+            if (bar.Name != "")
+                name = bar.Name;
+            else if (bar.SectionProperty.Name != "")
+                name = bar.SectionProperty.Name;
+            else
+                name = "Untitled Section";
+
             if (bar.SectionProperty.GetType() == typeof(ConcreteSection))
             {
                 model.Section = (ConcreteSection)bar.SectionProperty;
                 model.LengthYY = model.LengthZZ = bar.Length();
                 model.Usage = bar.GetUsage();
+                model.Name = name;
             }
             else Engine.Reflection.Compute.RecordError("Bar must have a ConcreteSection");
 
