@@ -14,8 +14,7 @@ namespace BH.Engine.S_Frame.Create
         /**** Public Methods                            ****/
         /***************************************************/
 
-
-        public static BarResult BarResultFromForces(string name = null, Vector f = null, Vector m = null )
+        public static BarForce BarForce(string name = null, Vector f = null, Vector m = null )
         {
             BarForce result = new BarForce()
             {
@@ -29,8 +28,17 @@ namespace BH.Engine.S_Frame.Create
             };
 
             return result;
-
         }
 
+        /***************************************************/
+
+        public static BarForce BarForce(string name = "", BarForce force = null)
+        {
+            force.ObjectId = name;
+
+            return force;
+        }
+
+        /***************************************************/
     }
 }

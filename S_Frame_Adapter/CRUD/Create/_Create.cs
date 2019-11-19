@@ -41,9 +41,7 @@ namespace BH.Adapter.S_Frame
         protected override bool Create<T>(IEnumerable<T> objects)
         {
             bool success = true;        //boolean returning if the creation was successfull or not
-
-            CreateFolder();
-
+            
             success = CreateCollection(objects as dynamic);
 
             //UpdateViews()             //If there exists a command for updating the views is the software call it now:

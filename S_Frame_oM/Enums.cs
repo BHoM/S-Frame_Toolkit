@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BH.oM.Adapters.S_Frame
+namespace BH.oM.Adapter.S_Frame
 {
     public enum DesignCodes
     {
@@ -45,5 +45,11 @@ namespace BH.oM.Adapters.S_Frame
         CShapeWall = 6,
         TShapeWall = 7,
         LShapeWall = 8
+    }
+    public enum UnitType
+    {
+        Length,
+        Force,
+        Moment
     }
 }
