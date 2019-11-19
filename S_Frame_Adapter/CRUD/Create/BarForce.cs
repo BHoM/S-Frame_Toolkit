@@ -30,6 +30,7 @@ using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.Constraints;
 using BH.oM.Structure.Results;
 using System.IO;
+using BH.Engine.S_Frame;
 
 namespace BH.Adapter.S_Frame
 {
@@ -42,7 +43,7 @@ namespace BH.Adapter.S_Frame
         
         private bool CreateCollection(IEnumerable<BarForce> barForces)
         {
-            //Code for creating a collection of bars in the software
+            //Code for adding additional loads to an existing file
 
 
             foreach (BarForce barForce in barForces)
@@ -89,7 +90,7 @@ namespace BH.Adapter.S_Frame
                         }
                         else if (line == endLine)
                         {
-                            lines_out.Append(LoadTable(barForce, i) + Environment.NewLine);
+                            lines_out.Append(barForce.ToS_Frame(i));
                             lines_out.Append(line + Environment.NewLine);
                             seek = 0;
                         }
@@ -99,29 +100,6 @@ namespace BH.Adapter.S_Frame
                 File.WriteAllText(filePath, lines_out.ToString());
             }
             return true;
-        }
-
-        /***************************************************/
-
-
-        private string LoadTable(BarForce barForce, int i)
-        {
-            string LC = i.ToString(" 0; 0; 0");
-            string Nf = (barForce.FX / 1000).ToString(" 0; 0; 0");
-            string Tf = (barForce.MX / 1000).ToString(" 0; 0; 0");
-            string Vfz = (barForce.FZ / 1000).ToString(" 0; 0; 0");
-            string Mfy = (barForce.MY / 1000).ToString(" 0; 0; 0");
-            string Cmy = " 1";
-            string Vfy = (barForce.FY / 1000).ToString(" 0; 0; 0");
-            string Mfz = (barForce.MZ / 1000).ToString(" 0; 0; 0");
-            string Cmz = " 1";
-            string Pdistr = " 0";
-            string CheckLC = " True";
-            string LoadType = " 1";
-            string Comment = "--";
-            string AutoGen = "False";
-
-            return $"{LC}	{Nf}	{Tf}	{Vfz}	{Mfy}	{Cmy}	{Vfy}	{Mfz}	{Cmz}	{Pdistr}	{CheckLC}	{LoadType}	{Comment}	{AutoGen}";
         }
 
         /***************************************************/

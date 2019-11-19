@@ -92,11 +92,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdapterActions\Push.cs" />
-    <Compile Include="CRUD\Create\BarResult.cs" />
-    <Compile Include="CRUD\Create\Bar.cs" />
-    <Compile Include="CRUD\Create\Material.cs" />
-    <Compile Include="CRUD\Create\Node.cs" />
     <Compile Include="CRUD\Create\SectionProperty.cs" />
+    <Compile Include="CRUD\Create\BarForce.cs" />
+    <Compile Include="CRUD\Create\Bar.cs" />
+    <Compile Include="CRUD\Create\SConcreteModel.cs" />
     <Compile Include="CRUD\Create\_Create.cs" />
     <Compile Include="CRUD\Delete\_Delete.cs" />
     <Compile Include="Types\NextId.cs" />

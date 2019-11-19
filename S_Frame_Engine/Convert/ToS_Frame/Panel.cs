@@ -1,11 +1,11 @@
-﻿using System;
+﻿using BH.oM.Adapter.S_Frame;
+using BH.oM.Structure.Elements;
+using BH.oM.Structure.SurfaceProperties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BH.oM.Structure.Elements;
-using BH.oM.Structure.SurfaceProperties;
-using BH.oM.Adapters.S_Frame;
 
 namespace BH.Engine.S_Frame
 {
@@ -15,7 +15,6 @@ namespace BH.Engine.S_Frame
         /**** Public Methods                            ****/
         /***************************************************/
 
-
         public static MemberType GetMemberType(Panel panel)
         {
             ConstantThickness section = (ConstantThickness)panel.Property;
@@ -23,9 +22,7 @@ namespace BH.Engine.S_Frame
             return MemberType.IShapeWall;
         }
 
-
         /***************************************************/
-
 
         public static string GetWallProfileData(ConstantThickness property)
         {
@@ -73,6 +70,14 @@ namespace BH.Engine.S_Frame
             string hookb = "0";
 
             return $" 1	 True	1	 {l}	 {t}	 {x0}    {y0}    {angle}	 {zonenoa}	 {zonenob}	 {vertd}	 {horzd}	 {curt}	 {verts}	 {horzs}	 {hooka}	 {hookb}";
+        }
+
+        /***************************************************/
+
+        public static string GetSectionData(Panel panel)
+        {
+            ConstantThickness section = (ConstantThickness)panel.Property;
+            return GetWallProfileData(section);
         }
 
         /***************************************************/

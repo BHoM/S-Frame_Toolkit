@@ -17,16 +17,20 @@ namespace BH.Engine.S_Frame
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static StructuralUsage1D GetUsage(this Bar bar)
+        public static MemberType GetMemberType(this ConcreteSection section)
         {
-            ConcreteSection section = (ConcreteSection)bar.SectionProperty;
-            if (bar.IsVertical())
+            switch (section.SectionProfile.Shape)
             {
-                return StructuralUsage1D.Column;
-            }
-            else
-            {
-                return StructuralUsage1D.Beam;
+                case ShapeType.Angle:
+                    return MemberType.LBeam;
+                case ShapeType.Circle:
+                    return MemberType.CircColumn;
+                case ShapeType.Rectangle:
+                    return MemberType.RectBeam;
+                case ShapeType.Tee:
+                    return MemberType.TBeam;
+                default:
+                    return MemberType.RectBeam;
             }
 
         }

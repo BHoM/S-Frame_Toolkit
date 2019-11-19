@@ -25,8 +25,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BH.oM.Structure.Elements;
+using BH.oM.Adapter.S_Frame;
+using BH.Engine.S_Frame;
 using BH.oM.Structure.SectionProperties;
-using BH.oM.Common.Materials;
+using BH.oM.Structure.Constraints;
+using BH.oM.Structure.Results;
+using System.IO;
 
 namespace BH.Adapter.S_Frame
 {
@@ -37,23 +42,37 @@ namespace BH.Adapter.S_Frame
         /**** Private methods                           ****/
         /***************************************************/
 
-        private bool CreateCollection(IEnumerable<ISectionProperty> sectionProperties)
+        private bool CreateCollection(IEnumerable<ISectionProperty> sections)
         {
-            //Code for creating a collection of section properties in the software
+            //Create models based on SectionProperties
 
-            foreach (ISectionProperty sectionProperty in sectionProperties)
+            List<SConcreteModel> models = new List<SConcreteModel>();
+
+            foreach (ISectionProperty section in sections)
             {
-                //Tip: if the NextId method has been implemented you can get the id to be used for the creation out as (cast into applicable type used by the software):
-                object secPropId = sectionProperty.CustomData[AdapterId];
-                //If also the default implmentation for the DependencyTypes is used,
-                //one can from here get the id's of the subobjects by calling (cast into applicable type used by the software): 
-                object materialId = sectionProperty.Material.CustomData[AdapterId];
+                if (section.GetType() == typeof(ConcreteSection))
+                {
+                    ConcreteSection cSection = (ConcreteSection)section;
+
+                    StructuralUsage1D usage = StructuralUsage1D.Beam;
+
+                    if (cSection.SectionProfile.Shape == oM.Geometry.ShapeProfiles.ShapeType.Circle)//the only shape not supported by s-concrete beams
+                    {
+                        usage = StructuralUsage1D.Column;
+                    }
+
+                    SConcreteModel model = new SConcreteModel()
+                    {
+                        Name = cSection.Name,
+                        Section = cSection,
+                        Usage = usage,
+                    };
+
+                    models.Add(model);
+                }
             }
 
-            throw new NotImplementedException();
+            return CreateCollection(models);
         }
-
-        /***************************************************/
-
     }
 }
