@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BH.oM.Adapter.S_Frame;
 
 namespace BH.Engine.S_Frame
 {
@@ -13,16 +14,17 @@ namespace BH.Engine.S_Frame
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static string ToS_Frame(this BarForce barForce, int i)
+        public static string ToS_Frame(this BarForce barForce, int i, SConcreteConfig config)
         {
-            string LC = i.ToString(" 0; 0; 0");
-            string Nf = (barForce.FX / 1000).ToString(" 0; 0; 0");
-            string Tf = (barForce.MX / 1000).ToString(" 0; 0; 0");
-            string Vfz = (barForce.FZ / 1000).ToString(" 0; 0; 0");
-            string Mfy = (barForce.MY / 1000).ToString(" 0; 0; 0");
+
+            string LC = (i+1).ToString("F0");
+            string Nf = (barForce.FX.ToUnit(config.Units, UnitType.Force)).ToString("G");
+            string Tf = (barForce.MX.ToUnit(config.Units, UnitType.Moment)).ToString("G");
+            string Vfz = (barForce.FZ.ToUnit(config.Units, UnitType.Force)).ToString("G");
+            string Mfy = (barForce.MY.ToUnit(config.Units, UnitType.Moment)).ToString("G");
             string Cmy = " 1";
-            string Vfy = (barForce.FY / 1000).ToString(" 0; 0; 0");
-            string Mfz = (barForce.MZ / 1000).ToString(" 0; 0; 0");
+            string Vfy = (barForce.FY.ToUnit(config.Units, UnitType.Force)).ToString("G");
+            string Mfz = (barForce.MZ.ToUnit(config.Units, UnitType.Moment)).ToString("G");
             string Cmz = " 1";
             string Pdistr = " 0";
             string CheckLC = " True";

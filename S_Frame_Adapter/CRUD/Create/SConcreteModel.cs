@@ -68,7 +68,7 @@ namespace BH.Adapter.S_Frame
 
         private string TableIdentifiers(SConcreteModel model)
         {
-            string memberType = model.GetMemberType().ToString("D");
+            string memberType = model.GetMemberType().ToString("G");
 
             return "@" + Environment.NewLine
                     + "@Object@S-CONCRETE Identifiers@" + Environment.NewLine
@@ -104,7 +104,7 @@ namespace BH.Adapter.S_Frame
 
             if (forces.Count() > 0)
             {
-                for (int i = 0; i <= forces.Count; i++)
+                for (int i = 0; i < forces.Count; i++)
                 {
                     loadText = loadText + forces[i].ToS_Frame(i);
                 }
