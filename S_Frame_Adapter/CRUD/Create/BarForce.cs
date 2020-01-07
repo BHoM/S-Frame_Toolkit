@@ -90,7 +90,7 @@ namespace BH.Adapter.S_Frame
                         }
                         else if (line == endLine)
                         {
-                            lines_out.Append(barForce.ToS_Frame(i));
+                            lines_out.Append(barForce.ToS_Frame(i, m_config));
                             lines_out.Append(line + Environment.NewLine);
                             seek = 0;
                         }

@@ -106,7 +106,7 @@ namespace BH.Adapter.S_Frame
             {
                 for (int i = 0; i < forces.Count; i++)
                 {
-                    loadText = loadText + forces[i].ToS_Frame(i);
+                    loadText = loadText + forces[i].ToS_Frame(i, m_config);
                 }
             }                
 
