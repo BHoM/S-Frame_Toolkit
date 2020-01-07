@@ -24,7 +24,7 @@ namespace BH.Engine.S_Frame
                     case UnitType.Force:
                         return quantitySI / 4448.22;
                     case UnitType.Moment:
-                        return quantitySI * 0.3048 / 4448.22;
+                        return quantitySI / 0.3048 / 4448.22;
                 }
             }
             else if (units == Units.Metric)
