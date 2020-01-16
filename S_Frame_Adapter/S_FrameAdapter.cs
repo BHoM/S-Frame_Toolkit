@@ -10,6 +10,7 @@ using BH.Engine.S_Frame;
 using System.Reflection;
 using System.IO;
 using BH.oM.Adapter.S_Frame;
+using BH.oM.Adapter;
 
 namespace BH.Adapter.S_Frame
 {
@@ -43,6 +44,7 @@ namespace BH.Adapter.S_Frame
                 Directory.CreateDirectory(folderPath);
 
             return folderPath;
+            
         }
 
         /***************************************************/
@@ -50,9 +52,11 @@ namespace BH.Adapter.S_Frame
         /***************************************************/
 
         private string m_FolderPath = "";
-        private SConcreteConfig m_config = new SConcreteConfig();
-
-  
+        private SConcreteConfig m_Config = new SConcreteConfig();
+        private AdapterSettings m_AdapterSettings = new oM.Adapter.AdapterSettings()
+        {
+            DefaultPushType = PushType.CreateOnly
+        };
 
         /***************************************************/
     }
