@@ -29,6 +29,7 @@ using System.Threading.Tasks;
 using BH.oM.Base;
 using BH.oM.Structure.Elements;
 using BH.oM.Common.Materials;
+using BH.oM.Adapter;
 
 namespace BH.Adapter.S_Frame
 {
@@ -38,7 +39,7 @@ namespace BH.Adapter.S_Frame
         /**** Adapter overload method                   ****/
         /***************************************************/
 
-        protected override IEnumerable<IBHoMObject> Read(Type type, IList ids)
+        protected override IEnumerable<IBHoMObject> IRead(Type type, IList ids, ActionConfig actionConfig = null)
         {
             //Main dispatcher method.
             //Choose what to pull out depending on the type.
