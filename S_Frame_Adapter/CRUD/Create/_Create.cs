@@ -29,6 +29,7 @@ using BH.oM.Structure.Elements;
 using BH.oM.Structure.SectionProperties;
 using BH.oM.Common.Materials;
 using BH.oM.Structure;
+using BH.oM.Adapter;
 
 namespace BH.Adapter.S_Frame
 {
@@ -38,7 +39,7 @@ namespace BH.Adapter.S_Frame
         /**** Adapter overload method                   ****/
         /***************************************************/
 
-        protected override bool Create<T>(IEnumerable<T> objects)
+        protected override bool ICreate<T>(IEnumerable<T> objects, ActionConfig actionConfig = null)
         {
             bool success = true;        //boolean returning if the creation was successfull or not
             
