@@ -75,10 +75,10 @@ namespace BH.Adapter.S_Frame
                     + "@Table@2@" + Environment.NewLine
                     + "Version	2019.1" + Environment.NewLine
                     + "Minor	.1" + Environment.NewLine
-                    + $"Codes	 {(int)m_config.DesignCodes}" + Environment.NewLine
-                    + $"Bar Type	 {(int)m_config.BarType}" + Environment.NewLine
+                    + $"Codes	 {(int)m_Config.DesignCodes}" + Environment.NewLine
+                    + $"Bar Type	 {(int)m_Config.BarType}" + Environment.NewLine
                     + $"Member Type	 {memberType}" + Environment.NewLine
-                    + $"Units	 {(int)m_config.Units}" + Environment.NewLine
+                    + $"Units	 {(int)m_Config.Units}" + Environment.NewLine
                     + "Orientation	 0" + Environment.NewLine
                     + @"ID IIh+wBlYGoToe8y8iFOCRXEsa5b4XSl7lG/LFSzg5IwqppG51NQPnq+pMXyyuNu1hP+unQOUHwm1+AXEgPs4UreNkG69CqTRmnDESeRGPGEOrSO2wf1LcjPT1M/C/PVY" + Environment.NewLine
                    + "@EndTable@";
@@ -88,7 +88,7 @@ namespace BH.Adapter.S_Frame
 
         private string TableParameters(SConcreteModel model)
         {
-            string parameterText = model.ToS_Frame(m_config);
+            string parameterText = model.ToS_Frame(m_Config);
 
             return "@Object@S-CONCRETE Parameters@ 0@" + Environment.NewLine
                     + "@Table@60@" + Environment.NewLine
@@ -106,7 +106,7 @@ namespace BH.Adapter.S_Frame
             {
                 for (int i = 0; i < forces.Count; i++)
                 {
-                    loadText = loadText + forces[i].ToS_Frame(i, m_config);
+                    loadText = loadText + forces[i].ToS_Frame(i, m_Config);
                 }
             }                
 
