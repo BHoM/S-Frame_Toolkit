@@ -34,46 +34,19 @@ namespace BH.Adapter.S_Frame
     public partial class S_Frame_Adapter
     {
         /***************************************************/
-        /**** BHoM Adapter Interface                    ****/
+        /**** Protected Methods                         ****/
         /***************************************************/
 
-        //Standard implementation for dependency types (change the dictionary below to override):
 
-        protected override List<Type> DependencyTypes<T>()
+        protected void SetupDependencies()
         {
-            Type type = typeof(T);
-
-            if (m_DependencyTypes.ContainsKey(type))
-                return m_DependencyTypes[type];
-
-            else if (type.BaseType != null && m_DependencyTypes.ContainsKey(type.BaseType))
-                return m_DependencyTypes[type.BaseType];
-
-            else
+            DependencyTypes = new Dictionary<Type, List<Type>>
             {
-                foreach (Type interType in type.GetInterfaces())
-                {
-                    if (m_DependencyTypes.ContainsKey(interType))
-                        return m_DependencyTypes[interType];
-                }
-            }
-
-
-            return new List<Type>();
+                {typeof(MeshResult), new List<Type> { typeof(Panel) } },
+                {typeof(BarResult), new List<Type> { typeof(Bar) } }
+            };
         }
-
-
-        /***************************************************/
-        /**** Private Fields                            ****/
-        /***************************************************/
-
-        private static Dictionary<Type, List<Type>> m_DependencyTypes = new Dictionary<Type, List<Type>>
-        {
-            {typeof(MeshResult), new List<Type> { typeof(Panel) } },
-            {typeof(BarResult), new List<Type> { typeof(Bar) } }
-        };
-
-
+        
         /***************************************************/
     }
 }

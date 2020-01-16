@@ -24,7 +24,10 @@ namespace BH.Adapter.S_Frame
 
         public S_Frame_Adapter(string folderPath = "", bool Active = false)
         {
-            AdapterId = BH.Engine.S_Frame.Convert.AdapterId;   //Set the "AdapterId" to "SoftwareName_id". Generally stored as a constant string in the convert class in the SoftwareName_Engine
+            //Initialization
+            Modules.Structure.ModuleLoader.LoadModules(this);
+
+            AdapterIdName = BH.Engine.S_Frame.Convert.AdapterIdName;   //Set the "AdapterIdName" to "SoftwareName_id". Generally stored as a constant string in the convert class in the SoftwareName_Engine
 
             m_FolderPath = CreateFolder(folderPath);
         }
