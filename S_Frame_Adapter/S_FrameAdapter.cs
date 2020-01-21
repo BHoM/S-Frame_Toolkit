@@ -28,6 +28,8 @@ namespace BH.Adapter.S_Frame
             //Initialization
             Modules.Structure.ModuleLoader.LoadModules(this);
 
+            m_AdapterSettings.DefaultPushType = PushType.CreateOnly;
+
             AdapterIdName = BH.Engine.S_Frame.Convert.AdapterIdName;   //Set the "AdapterIdName" to "SoftwareName_id". Generally stored as a constant string in the convert class in the SoftwareName_Engine
 
             m_FolderPath = CreateFolder(folderPath);
