@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BH.oM.Adapter.S_Frame;
+using BH.oM.Adapter.SConcrete;
 
-namespace BH.Engine.S_Frame
+namespace BH.Engine.SConcrete
 {
     public static partial class Convert
     {
@@ -14,7 +14,7 @@ namespace BH.Engine.S_Frame
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static string ToS_Frame(this BarForce barForce, int i, SConcreteConfig config)
+        public static string ToSConcrete(this BarForce barForce, int i, SConcreteConfig config)
         {
 
             string LC = (i+1).ToString("F0");

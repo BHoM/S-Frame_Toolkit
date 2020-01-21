@@ -1,4 +1,4 @@
-﻿using BH.oM.Adapter.S_Frame;
+﻿using BH.oM.Adapter.SConcrete;
 using BH.oM.Structure.Elements;
 using BH.oM.Structure.SurfaceProperties;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BH.Engine.S_Frame
+namespace BH.Engine.SConcrete
 {
     public static partial class Convert
     {

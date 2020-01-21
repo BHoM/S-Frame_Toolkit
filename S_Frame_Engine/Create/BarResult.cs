@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using BH.oM.Structure.Results;
 using BH.oM.Geometry;
 
-namespace BH.Engine.S_Frame.Create
+namespace BH.Engine.SConcrete.Create
 {
     public static partial class Create
     {

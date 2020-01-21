@@ -7,10 +7,10 @@ using BH.oM.Structure.Elements;
 using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.Results;
 using BH.oM.Geometry;
-using BH.oM.Adapter.S_Frame;
+using BH.oM.Adapter.SConcrete;
 using BH.Engine.Structure;
 
-namespace BH.Engine.S_Frame.Create
+namespace BH.Engine.SConcrete.Create
 {
     public static partial class Create
     {

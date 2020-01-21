@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BH.oM.Adapter.S_Frame
+namespace BH.oM.Adapter.SConcrete
 {
     public enum DesignCodes
     {

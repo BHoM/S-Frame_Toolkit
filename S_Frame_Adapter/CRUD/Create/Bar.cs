@@ -26,16 +26,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Structure.Elements;
-using BH.oM.Adapter.S_Frame;
-using BH.Engine.S_Frame;
+using BH.oM.Adapter.SConcrete;
+using BH.Engine.SConcrete;
 using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.Constraints;
 using BH.oM.Structure.Results;
 using System.IO;
 
-namespace BH.Adapter.S_Frame
+namespace BH.Adapter.SConcrete
 {
-    public partial class S_Frame_Adapter
+    public partial class SConcrete_Adapter
     {
 
         /***************************************************/
@@ -46,7 +46,7 @@ namespace BH.Adapter.S_Frame
         {
             //Create models based on bars
 
-            List<SConcreteModel> models = bars.Select(x => Engine.S_Frame.Create.Create.SConcreteModel(x)).ToList();
+            List<SConcreteModel> models = bars.Select(x => Engine.SConcrete.Create.Create.SConcreteModel(x)).ToList();
 
             return CreateCollection(models);
         }

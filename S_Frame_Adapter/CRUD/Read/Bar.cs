@@ -31,9 +31,9 @@ using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.Constraints;
 using BH.oM.Common.Materials;
 
-namespace BH.Adapter.S_Frame
+namespace BH.Adapter.SConcrete
 {
-    public partial class S_Frame_Adapter
+    public partial class SConcrete_Adapter
     {
 
         /***************************************************/

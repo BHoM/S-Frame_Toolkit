@@ -30,11 +30,11 @@ using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.Constraints;
 using BH.oM.Structure.Results;
 using System.IO;
-using BH.Engine.S_Frame;
+using BH.Engine.SConcrete;
 
-namespace BH.Adapter.S_Frame
+namespace BH.Adapter.SConcrete
 {
-    public partial class S_Frame_Adapter
+    public partial class SConcrete_Adapter
     {
 
         /***************************************************/
@@ -90,7 +90,7 @@ namespace BH.Adapter.S_Frame
                         }
                         else if (line == endLine)
                         {
-                            lines_out.Append(barForce.ToS_Frame(i, m_Config));
+                            lines_out.Append(barForce.ToSConcrete(i, m_Config));
                             lines_out.Append(line + Environment.NewLine);
                             seek = 0;
                         }

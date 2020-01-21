@@ -1,5 +1,5 @@
 ﻿using BH.Engine.Structure;
-using BH.oM.Adapter.S_Frame;
+using BH.oM.Adapter.SConcrete;
 using BH.oM.Geometry.ShapeProfiles;
 using BH.oM.Structure.Elements;
 using BH.oM.Structure.SectionProperties;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BH.Engine.S_Frame
+namespace BH.Engine.SConcrete
 {
     public static partial class Convert
     {

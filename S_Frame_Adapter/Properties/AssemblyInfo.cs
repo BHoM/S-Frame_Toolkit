@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("S_Frame_Adapter")]
+[assembly: AssemblyTitle("SConcrete_Adapter")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Buro Happold")]
-[assembly: AssemblyProduct("S_Frame_Adapter")]
+[assembly: AssemblyProduct("SConcrete_Adapter")]
 [assembly: AssemblyCopyright("Copyright © Buro Happold 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
