@@ -1,4 +1,4 @@
-﻿using BH.oM.Adapter.S_Frame;
+﻿using BH.oM.Adapter.SConcrete;
 using BH.oM.Geometry.ShapeProfiles;
 using System;
 using BH.oM.Structure.Elements;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BH.Engine.S_Frame
+namespace BH.Engine.SConcrete
 {
     public static partial class Convert
     {
@@ -16,7 +16,7 @@ namespace BH.Engine.S_Frame
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static string ToS_Frame(this SConcreteModel model, SConcreteConfig config)
+        public static string ToSConcrete(this SConcreteModel model, SConcreteConfig config)
         {
             //Config Data
             int codes = (int)config.DesignCodes;

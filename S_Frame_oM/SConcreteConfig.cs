@@ -8,7 +8,7 @@ using BH.oM.Common.Properties;
 using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.Results;
 
-namespace BH.oM.Adapter.S_Frame
+namespace BH.oM.Adapter.SConcrete
 {
     public class SConcreteConfig : BHoMObject
     {

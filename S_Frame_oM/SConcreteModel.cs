@@ -9,7 +9,7 @@ using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.Results;
 using BH.oM.Structure.Elements;
 
-namespace BH.oM.Adapter.S_Frame
+namespace BH.oM.Adapter.SConcrete
 {
     public class SConcreteModel : BHoMObject
     {

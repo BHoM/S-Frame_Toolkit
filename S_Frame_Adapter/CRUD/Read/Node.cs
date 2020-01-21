@@ -30,9 +30,9 @@ using BH.oM.Base;
 using BH.oM.Structure.Elements;
 using BH.oM.Structure.Constraints;
 
-namespace BH.Adapter.S_Frame
+namespace BH.Adapter.SConcrete
 {
-    public partial class S_Frame_Adapter
+    public partial class SConcrete_Adapter
     {
 
         /***************************************************/
