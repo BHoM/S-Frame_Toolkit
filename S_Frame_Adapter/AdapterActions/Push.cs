@@ -19,15 +19,11 @@ namespace BH.Adapter.SConcrete
     {
         public override List<object> Push(IEnumerable<object> objects, string tag = "", PushType pushType = PushType.AdapterDefault, ActionConfig actionConfig = null)
         {
-            IEnumerable<object> forceObjects = objects.Where(x => x.GetType() == typeof(BarForce));
-            IEnumerable<object> otherObjects = objects.Where(x => x.GetType() != typeof(BarForce));
+            // BarForces are IObjects, not IBHoMObject: Create doesn't work with them.
+            // Create them separately.
+            CreateCollection(objects.OfType<BarForce>());
 
-            if(forceObjects.Count() > 0)
-            {
-                CreateCollection(forceObjects as IEnumerable<BarForce>);
-            }
-                
-            return base.Push(otherObjects, tag, pushType, actionConfig);
+            return base.Push(objects.Where(x => !(x is BarForce)), tag, pushType, actionConfig);
         }
     }
 }
