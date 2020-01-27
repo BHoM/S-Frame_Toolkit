@@ -42,25 +42,23 @@ namespace BH.Adapter.SConcrete
         /**** Private methods                           ****/
         /***************************************************/
         
-        private bool CreateCollection(IEnumerable<SConcreteModel> models)
+        private bool Create(SConcreteModel model)
         {
             //Code for creating a bunch of S-Concrete files, one for each 'model' passed in.
+            
+            string filePath = Path.Combine(paths: new string[] { m_FolderPath, (model.Name.ToString() + ".SCO") });
 
-            foreach (SConcreteModel model in models)
+            List<string> lines = new List<string>();
+
+            if (model.Section != null)
             {
-                string filePath = Path.Combine(paths: new string[] { m_FolderPath, (model.Name.ToString() + ".SCO") });
-
-                List<string> lines = new List<string>();
-
-                if (model.Section != null)
-                {
-                    lines.Add(TableIdentifiers(model));
-                    lines.Add(TableParameters(model));
-                    lines.Add(TableSectionalLoads(model.Forces));
-                }
-                
-                File.WriteAllLines(filePath, lines);
+                lines.Add(TableIdentifiers(model));
+                lines.Add(TableParameters(model));
+                lines.Add(TableSectionalLoads(model.Forces));
             }
+                
+            File.WriteAllLines(filePath, lines);
+
             return true;
         }
 

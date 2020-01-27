@@ -41,64 +41,61 @@ namespace BH.Adapter.SConcrete
         /**** Private methods                           ****/
         /***************************************************/
         
-        private bool CreateCollection(IEnumerable<BarForce> barForces) //Move to IUpdate
+        private bool Create(BarForce barForce) //Move to IUpdate
         {
             //Code for adding additional loads to an existing file
-
-
-            foreach (BarForce barForce in barForces)
-            {
-                string filePath = Path.Combine(paths: new string[] { m_FolderPath, (barForce.ObjectId.ToString() + ".SCO") });
+            
+            string filePath = Path.Combine(paths: new string[] { m_FolderPath, (barForce.ObjectId.ToString() + ".SCO") });
                 
-                string[] lines = File.ReadAllLines(filePath);
-                StringBuilder lines_out = new StringBuilder();
+            string[] lines = File.ReadAllLines(filePath);
+            StringBuilder lines_out = new StringBuilder();
 
-                int seek = 0;
-                int i = 0;
-                string startLine = @"@Object@S-CONCRETE Sectional Loads@";
-                string endLine = "@EndTable@";
+            int seek = 0;
+            int i = 0;
+            string startLine = @"@Object@S-CONCRETE Sectional Loads@";
+            string endLine = "@EndTable@";
 
-                foreach (string line in lines)
+            foreach (string line in lines)
+            {
+                if (seek == 0)
                 {
-                    if (seek == 0)
+                    if (line == startLine)
                     {
-                        if (line == startLine)
-                        {
-                            lines_out.Append(line + Environment.NewLine);
-                            seek = 1;
-                        }
-                        else
-                        {
-                            lines_out.Append(line + Environment.NewLine);
-                        }
+                        lines_out.Append(line + Environment.NewLine);
+                        seek = 1;
                     }
-                    if (seek == 1)
+                    else
                     {
-                        if (line.StartsWith("@Table"))
-                        {
-                            i = 1;
-                            lines_out.Append(line + Environment.NewLine);
-                        }
-                        if (line.StartsWith("LC"))
-                        {
-                            lines_out.Append(line + Environment.NewLine);
-                        }
-                        else if (line.StartsWith(" "))
-                        {
-                            i = int.Parse(line.Split('\t')[0].Trim()) + 1;
-                            lines_out.Append(line + Environment.NewLine);
-                        }
-                        else if (line == endLine)
-                        {
-                            lines_out.Append(barForce.ToSConcrete(i, m_Config));
-                            lines_out.Append(line + Environment.NewLine);
-                            seek = 0;
-                        }
+                        lines_out.Append(line + Environment.NewLine);
                     }
                 }
-
-                File.WriteAllText(filePath, lines_out.ToString());
+                if (seek == 1)
+                {
+                    if (line.StartsWith("@Table"))
+                    {
+                        i = 1;
+                        lines_out.Append(line + Environment.NewLine);
+                    }
+                    if (line.StartsWith("LC"))
+                    {
+                        lines_out.Append(line + Environment.NewLine);
+                    }
+                    else if (line.StartsWith(" "))
+                    {
+                        i = int.Parse(line.Split('\t')[0].Trim()) + 1;
+                        lines_out.Append(line + Environment.NewLine);
+                    }
+                    else if (line == endLine)
+                    {
+                        lines_out.Append(barForce.ToSConcrete(i, m_Config));
+                        lines_out.Append(line + Environment.NewLine);
+                        seek = 0;
+                    }
+                }
             }
+
+            File.WriteAllText(filePath, lines_out.ToString());
+
             return true;
         }
 

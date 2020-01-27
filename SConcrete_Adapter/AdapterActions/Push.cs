@@ -21,7 +21,10 @@ namespace BH.Adapter.SConcrete
         {
             // BarForces are IObjects, not IBHoMObject: Create doesn't work with them.
             // Create them separately.
-            CreateCollection(objects.OfType<BarForce>());
+            foreach (BarForce barForce in objects.OfType<BarForce>())
+            {
+                Create(barForce);
+            }
 
             return base.Push(objects.Where(x => !(x is BarForce)), tag, pushType, actionConfig);
         }

@@ -42,13 +42,9 @@ namespace BH.Adapter.SConcrete
         /**** Private methods                           ****/
         /***************************************************/
 
-        private bool CreateCollection(IEnumerable<ISectionProperty> sections)
+        private bool Create(ISectionProperty section)
         {
-            //Create models based on SectionProperties
-
-            List<SConcreteModel> models = sections.Select(x => Engine.SConcrete.Create.Create.SConcreteModel(x)).ToList();
-
-            return CreateCollection(models);
+            return Create(Engine.SConcrete.Create.Create.SConcreteModel(section));
         }
     }
 }

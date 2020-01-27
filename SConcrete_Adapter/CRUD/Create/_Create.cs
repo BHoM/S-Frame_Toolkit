@@ -40,8 +40,18 @@ namespace BH.Adapter.SConcrete
         /***************************************************/
 
         protected override bool ICreate<T>(IEnumerable<T> objects, ActionConfig actionConfig = null)
-        {            
-            return CreateCollection(objects as dynamic);
+        {
+            bool success = false;
+
+            foreach (object item in objects)
+            {
+                if (!Create(item as dynamic))
+                {
+                    success = false;
+                }
+            }
+
+            return success;
         }
 
         /***************************************************/

@@ -42,13 +42,9 @@ namespace BH.Adapter.SConcrete
         /**** Private methods                           ****/
         /***************************************************/
 
-        private bool CreateCollection(IEnumerable<Bar> bars)
+        private bool Create(Bar bar)
         {
-            //Create models based on bars
-
-            List<SConcreteModel> models = bars.Select(x => Engine.SConcrete.Create.Create.SConcreteModel(x)).ToList();
-
-            return CreateCollection(models);
+            return Create(Engine.SConcrete.Create.Create.SConcreteModel(bar));
         }
     }
 }
