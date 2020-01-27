@@ -7,8 +7,8 @@
     <ProjectGuid>{CFD6BA4A-3480-4351-9F7F-B1B37ABB2F21}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BH.Adapter.S_Frame</RootNamespace>
-    <AssemblyName>S_Frame_Adapter</AssemblyName>
+    <RootNamespace>BH.Adapter.SConcrete</RootNamespace>
+    <AssemblyName>SConcrete_Adapter</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
