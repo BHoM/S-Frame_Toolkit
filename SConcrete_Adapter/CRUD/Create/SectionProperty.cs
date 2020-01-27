@@ -42,9 +42,9 @@ namespace BH.Adapter.SConcrete
         /**** Private methods                           ****/
         /***************************************************/
 
-        private bool Create(ISectionProperty section)
+        private bool CreateObject(ISectionProperty section, string filePath)
         {
-            return Create(Engine.SConcrete.Create.Create.SConcreteModel(section));
+            return CreateObject(Engine.SConcrete.Create.Create.SConcreteModel(section), filePath);
         }
     }
 }

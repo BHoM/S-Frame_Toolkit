@@ -25,10 +25,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
-using BH.oM.Structure.Elements;
+using BH.oM.Structure.Results;
 using BH.oM.Structure.SectionProperties;
 using BH.oM.Common.Materials;
-using BH.oM.Structure;
 using BH.oM.Base;
 using BH.oM.Adapter;
 
@@ -40,23 +39,45 @@ namespace BH.Adapter.SConcrete
         /**** Adapter overload method                   ****/
         /***************************************************/
 
-        protected override bool ICreate<T>(IEnumerable<T> objects, ActionConfig actionConfig = null)
+        protected override bool IUpdate<T>(IEnumerable<T> objects, ActionConfig actionConfig = null)
         {
-            bool success = true;
+            bool success = false;
             bool exists = false;
 
-            if (typeof(BH.oM.Base.IBHoMObject).IsAssignableFrom(typeof(T)))
+            foreach (IObject objectToUpdate in objects)
             {
-                foreach (IBHoMObject objectToCreate in objects)
+                string filePath = GetFilePath(objectToUpdate, ref exists);
+                if (exists)
                 {
-                    string filePath = GetFilePath(objectToCreate, ref exists);
-
-                    if (!CreateObject(objectToCreate as dynamic, filePath))
-                    {
-                        success = false;
-                    }
+                    UpdateObject(objectToUpdate as dynamic, filePath);
                 }
-            }            
+                else
+                {
+                    CreateObject(objectToUpdate as dynamic, filePath);
+                }
+                //if (typeof(T) == typeof(BarForce))
+                //{
+                //    BarForce barForce = (BarForce)objectToUpdate;
+                //    string filePath = GetFilePath(barForce, ref exists);
+                //    if (exists)
+                //    {
+                //        UpdateObject(barForce as dynamic, filePath);
+                //    }
+                //}
+                //if (typeof(T) == typeof(IBHoMObject))
+                //{
+                //    IBHoMObject bhObject = (IBHoMObject)objectToUpdate;
+                //    string filePath = GetFilePath(bhObject, ref exists);
+                //    if (exists)
+                //    {
+                //        UpdateObject(bhObject as dynamic, filePath);
+                //    }
+                //    else
+                //    {
+                //        CreateObject(bhObject as dynamic, filePath);
+                //    }
+                //}
+            }
 
             return success;
         }

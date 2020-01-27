@@ -41,17 +41,15 @@ namespace BH.Adapter.SConcrete
         /**** Private methods                           ****/
         /***************************************************/
         
-        private bool Create(BarForce barForce) //Move to IUpdate
+        private bool UpdateObject(BarForce barForce, string filePath) //Move to IUpdate
         {
-            //Code for adding additional loads to an existing file
-            
-            string filePath = Path.Combine(paths: new string[] { m_FolderPath, (barForce.ObjectId.ToString() + ".SCO") });
-                
+            //Code for adding additional loads to an existing file                            
             string[] lines = File.ReadAllLines(filePath);
             StringBuilder lines_out = new StringBuilder();
 
+            bool replace = true;
             int seek = 0;
-            int i = 0;
+            int i = 1;
             string startLine = @"@Object@S-CONCRETE Sectional Loads@";
             string endLine = "@EndTable@";
 
@@ -73,17 +71,20 @@ namespace BH.Adapter.SConcrete
                 {
                     if (line.StartsWith("@Table"))
                     {
-                        i = 1;
                         lines_out.Append(line + Environment.NewLine);
                     }
                     if (line.StartsWith("LC"))
                     {
                         lines_out.Append(line + Environment.NewLine);
                     }
-                    else if (line.StartsWith(" "))
+                    else if (line.StartsWith(" ") && !replace)
                     {
                         i = int.Parse(line.Split('\t')[0].Trim()) + 1;
                         lines_out.Append(line + Environment.NewLine);
+                    }
+                    else if (line.StartsWith(" ") && replace)
+                    {
+                        //ignore any existing loads
                     }
                     else if (line == endLine)
                     {

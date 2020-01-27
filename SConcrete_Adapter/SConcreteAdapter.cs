@@ -11,6 +11,7 @@ using System.Reflection;
 using System.IO;
 using BH.oM.Adapter.SConcrete;
 using BH.oM.Adapter;
+using BH.oM.Structure.Results;
 
 namespace BH.Adapter.SConcrete
 {
@@ -29,7 +30,7 @@ namespace BH.Adapter.SConcrete
             Modules.Structure.ModuleLoader.LoadModules(this);
             SetupComparers();
             SetupDependencies();
-            m_AdapterSettings.DefaultPushType = PushType.CreateOnly;
+            m_AdapterSettings.DefaultPushType = PushType.UpdateOnly;
             AdapterIdName = BH.Engine.SConcrete.Convert.AdapterIdName;   //Set the "AdapterIdName" to "SoftwareName_id". Generally stored as a constant string in the convert class in the SoftwareName_Engine
 
             if (Active)
@@ -50,6 +51,31 @@ namespace BH.Adapter.SConcrete
 
             return folderPath;
             
+        }
+
+        /***************************************************/
+
+        private string GetFilePath(object item, ref bool exists)
+        {
+            string filePath = "";
+            
+            if (item.GetType() == typeof(BarForce))
+            {
+                filePath = Path.Combine(paths: new string[] { m_FolderPath, ((item as BarForce).ObjectId.ToString() + ".SCO") });
+                exists = File.Exists(filePath);
+                return filePath;
+            }
+
+            if (typeof(IBHoMObject).IsAssignableFrom(item.GetType()))
+            {
+                filePath = Path.Combine(paths: new string[] { m_FolderPath, ((item as IBHoMObject).Name.ToString() + ".SCO") });
+                exists = File.Exists(filePath);
+                return filePath;
+            }
+
+            exists = false;
+            Engine.Reflection.Compute.RecordError("Could not create S-Concrete file; object or filename is invalid.");
+            return filePath;
         }
 
         /***************************************************/

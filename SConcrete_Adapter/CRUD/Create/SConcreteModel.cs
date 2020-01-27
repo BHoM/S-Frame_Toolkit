@@ -42,12 +42,8 @@ namespace BH.Adapter.SConcrete
         /**** Private methods                           ****/
         /***************************************************/
         
-        private bool Create(SConcreteModel model)
+        private bool CreateObject(SConcreteModel model, string filePath)
         {
-            //Code for creating a bunch of S-Concrete files, one for each 'model' passed in.
-            
-            string filePath = Path.Combine(paths: new string[] { m_FolderPath, (model.Name.ToString() + ".SCO") });
-
             List<string> lines = new List<string>();
 
             if (model.Section != null)

@@ -23,7 +23,8 @@ namespace BH.Adapter.SConcrete
             // Create them separately.
             foreach (BarForce barForce in objects.OfType<BarForce>())
             {
-                Create(barForce);
+                string filePath = Path.Combine(paths: new string[] { m_FolderPath, (barForce.ObjectId.ToString() + ".SCO") });
+                UpdateObject(barForce, filePath);
             }
 
             return base.Push(objects.Where(x => !(x is BarForce)), tag, pushType, actionConfig);
