@@ -40,15 +40,8 @@ namespace BH.Adapter.SConcrete
         /***************************************************/
 
         protected override bool ICreate<T>(IEnumerable<T> objects, ActionConfig actionConfig = null)
-        {
-            bool success = true;        //boolean returning if the creation was successfull or not
-            
-            success = CreateCollection(objects as dynamic);
-
-            //UpdateViews()             //If there exists a command for updating the views is the software call it now:
-
-            return success;             //Finally return if the creation was successful or not
-
+        {            
+            return CreateCollection(objects as dynamic);
         }
 
         /***************************************************/

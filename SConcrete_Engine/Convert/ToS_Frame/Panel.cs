@@ -24,7 +24,7 @@ namespace BH.Engine.SConcrete
 
         /***************************************************/
 
-        public static string GetWallProfileData(ConstantThickness property)
+        public static string GetWallProfileData(ConstantThickness property) //Should be re-aligned with bar creates
         {
             string memberType = MemberType.RectColumn.ToString("D");
             string memberName = property.Name;

@@ -41,7 +41,7 @@ namespace BH.Adapter.SConcrete
         /**** Private methods                           ****/
         /***************************************************/
         
-        private bool CreateCollection(IEnumerable<BarForce> barForces)
+        private bool CreateCollection(IEnumerable<BarForce> barForces) //Move to IUpdate
         {
             //Code for adding additional loads to an existing file
 

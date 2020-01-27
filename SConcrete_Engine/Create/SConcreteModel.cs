@@ -52,5 +52,43 @@ namespace BH.Engine.SConcrete.Create
             return model;
         }
 
+        public static SConcreteModel SConcreteModel(this ISectionProperty section)
+        {
+            if (section.GetType() != typeof(ConcreteSection))
+            {
+                Engine.Reflection.Compute.RecordWarning("S-Concrete can only design ConcreteSections. {} has been provided");
+                return null;
+            }
+
+
+            ConcreteSection cSection = (ConcreteSection)section;
+
+            StructuralUsage1D usage = StructuralUsage1D.Beam;
+
+            if (cSection.SectionProfile.Shape == oM.Geometry.ShapeProfiles.ShapeType.Circle)//the only shape not supported by s-concrete beams
+            {
+                usage = StructuralUsage1D.Column;
+            }
+
+            SConcreteModel model = new SConcreteModel()
+            {
+                Name = cSection.Name,
+                Section = cSection,
+                Usage = usage,
+            };
+
+            return model;
+        }
+
+        public static SConcreteModel SConcreteModel(this ISectionProperty section, List<BarForce> forces = null)
+        {
+            SConcreteModel model = section.SConcreteModel();
+
+            if (forces != null)
+                model.Forces = forces;
+
+            return model;
+        }
+
     }
 }

@@ -104,7 +104,7 @@
     <Folder Include="Query\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\S_Frame_oM\SConcrete_oM.csproj">
+    <ProjectReference Include="..\SConcrete_oM\SConcrete_oM.csproj">
       <Project>{f55cc8a5-44cb-4333-bc8a-a0eb6775b1a8}</Project>
       <Name>SConcrete_oM</Name>
       <Private>False</Private>

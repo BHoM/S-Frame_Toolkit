@@ -27,12 +27,15 @@ namespace BH.Adapter.SConcrete
         {
             //Initialization
             Modules.Structure.ModuleLoader.LoadModules(this);
-
+            SetupComparers();
+            SetupDependencies();
             m_AdapterSettings.DefaultPushType = PushType.CreateOnly;
-
             AdapterIdName = BH.Engine.SConcrete.Convert.AdapterIdName;   //Set the "AdapterIdName" to "SoftwareName_id". Generally stored as a constant string in the convert class in the SoftwareName_Engine
 
-            m_FolderPath = CreateFolder(folderPath);
+            if (Active)
+            {
+                m_FolderPath = CreateFolder(folderPath);
+            }
         }
 
         /***************************************************/

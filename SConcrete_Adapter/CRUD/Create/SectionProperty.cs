@@ -46,31 +46,7 @@ namespace BH.Adapter.SConcrete
         {
             //Create models based on SectionProperties
 
-            List<SConcreteModel> models = new List<SConcreteModel>();
-
-            foreach (ISectionProperty section in sections)
-            {
-                if (section.GetType() == typeof(ConcreteSection))
-                {
-                    ConcreteSection cSection = (ConcreteSection)section;
-
-                    StructuralUsage1D usage = StructuralUsage1D.Beam;
-
-                    if (cSection.SectionProfile.Shape == oM.Geometry.ShapeProfiles.ShapeType.Circle)//the only shape not supported by s-concrete beams
-                    {
-                        usage = StructuralUsage1D.Column;
-                    }
-
-                    SConcreteModel model = new SConcreteModel()
-                    {
-                        Name = cSection.Name,
-                        Section = cSection,
-                        Usage = usage,
-                    };
-
-                    models.Add(model);
-                }
-            }
+            List<SConcreteModel> models = sections.Select(x => Engine.SConcrete.Create.Create.SConcreteModel(x)).ToList();
 
             return CreateCollection(models);
         }
