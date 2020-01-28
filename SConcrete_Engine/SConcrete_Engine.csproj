@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Convert\AdapterId.cs" />
+    <Compile Include="Convert\ToBHoM\SectionProperty.cs" />
     <Compile Include="Convert\ToS_Frame\SectionProperty.cs" />
     <Compile Include="Convert\ToS_Frame\BarForce.cs" />
     <Compile Include="Convert\ToS_Frame\Bar.cs" />
@@ -99,7 +100,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Compute\" />
-    <Folder Include="Convert\ToBHoM\" />
     <Folder Include="Modify\" />
     <Folder Include="Query\" />
   </ItemGroup>

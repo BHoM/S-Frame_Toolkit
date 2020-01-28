@@ -46,14 +46,15 @@ namespace BH.Adapter.SConcrete
 
         private SConcreteModel ReadSConcreteModel(string filePath = "")
         {
-            //Tip: If the software stores depending types such as Nodes and SectionProperties in separate object tables,
-            //it might be a massive preformance boost to read in and store these properties before reading in the bars 
-            //and referenced these stored objects instead of reading them in each time.
-            //For example, a case where 1000 bars share 5 total number of different SectionProperties you want, if possible,
-            //to only read in the section properties 5 times, not 1000. This might of course vary from software to software.
+            SConcreteModel model = new SConcreteModel();
 
-            //Implement code for reading bars
-            throw new NotImplementedException();
+            model.Section = ReadSectionProperty(filePath);
+            //Tuple<double, double> length = ReadLength(filePath);
+            //model.LengthXX = length.Item1;
+            //model.LengthYY = length.Item2;
+            //model.Forces = ReadForces(filePath);
+
+            return model;
         }
 
         /***************************************************/
