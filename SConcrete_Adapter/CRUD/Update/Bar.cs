@@ -21,14 +21,17 @@
  */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using BH.oM.Base;
 using BH.oM.Structure.Elements;
+using BH.oM.Adapter.SConcrete;
+using BH.Engine.SConcrete;
+using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.Constraints;
+using BH.oM.Structure.Results;
+using System.IO;
 
 namespace BH.Adapter.SConcrete
 {
@@ -39,16 +42,27 @@ namespace BH.Adapter.SConcrete
         /**** Private methods                           ****/
         /***************************************************/
 
-        //The List<string> in the methods below can be changed to a list of any type of identification more suitable for the toolkit
-        //If no ids are provided, the convention is to return all elements of the type
-
-        private List<Node> ReadNodes(List<string> ids = null)
+        private bool UpdateObject(ISectionProperty property, string filePath)
         {
-            //Implement code for reading nodes
-            throw new NotImplementedException();
+            bool success = true;
+
+            m_Config = ReadSConcreteConfig(filePath);
+
+            string str = null;
+
+            try
+            {
+                str = File.ReadAllText(filePath);
+            }
+            catch
+            {
+                Engine.Reflection.Compute.RecordError($"Could not read file {filePath}");
+                return false;
+            }
+             
+            
+
+            return success;
         }
-
-        /***************************************************/
-
     }
 }

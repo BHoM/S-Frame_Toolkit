@@ -77,6 +77,16 @@ namespace BH.Adapter.SConcrete
             Engine.Reflection.Compute.RecordError("Could not create S-Concrete file; object or filename is invalid.");
             return filePath;
         }
+        /***************************************************/
+
+        private string GetFilePath(string id)
+        {
+            string filePath = "";
+
+            filePath = Path.Combine(paths: new string[] { m_FolderPath, (id + ".SCO") });
+
+            return filePath;
+        }
 
         /***************************************************/
         /**** Private Fields                            ****/

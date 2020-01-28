@@ -43,7 +43,7 @@ namespace BH.Adapter.SConcrete
         //The List<string> in the methods below can be changed to a list of any type of identification more suitable for the toolkit
         //If no ids are provided, the convention is to return all elements of the type
 
-        private List<Bar> ReadBars(List<string> ids = null)
+        private Bar ReadBar(string filePath = "")
         {
             //Tip: If the software stores depending types such as Nodes and SectionProperties in separate object tables,
             //it might be a massive preformance boost to read in and store these properties before reading in the bars 

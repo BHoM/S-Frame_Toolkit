@@ -24,9 +24,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
+using System.IO;
 using System.Threading.Tasks;
-using BH.oM.Structure.MaterialFragments;
+using BH.oM.Structure.Elements;
+using BH.oM.Structure.SectionProperties;
+using BH.oM.Structure.Constraints;
+using BH.oM.Common.Materials;
+using BH.oM.Adapter.SConcrete;
 
 namespace BH.Adapter.SConcrete
 {
@@ -40,10 +45,57 @@ namespace BH.Adapter.SConcrete
         //The List<string> in the methods below can be changed to a list of any type of identification more suitable for the toolkit
         //If no ids are provided, the convention is to return all elements of the type
 
-        private Concrete ReadMaterial(string filePath = "")
+        private SConcreteConfig ReadSConcreteConfig(string filePath = "")
         {
-            //Implement code for reading materials
-            throw new NotImplementedException();
+            string str = "";
+
+            //check that id is a real file
+            if (File.Exists(filePath))
+            {
+                //read the file into memory
+                str = File.ReadAllText(filePath);
+            }
+            else
+            {
+                Engine.Reflection.Compute.RecordError("Could not read file");
+                return null;
+            }
+
+            //search the file for each property of config
+
+            DesignCodes designCode = new DesignCodes();
+            BarType barType = new BarType();
+            MemberType memberType = new MemberType();
+            Units units = new Units();
+
+            int i;
+
+            Match m = Regex.Match(str, @"Codes\s+(\d+)");
+            int.TryParse(m.Captures[0].ToString(), out i);
+            designCode = (DesignCodes)i;
+
+            m = Regex.Match(str, @"Bar Type\s+(\d+)");
+            int.TryParse(m.Captures[0].ToString(), out i);
+            barType = (BarType)i;
+
+            m = Regex.Match(str, @"Member Type\s+(\d+)");
+            int.TryParse(m.Captures[0].ToString(), out i);
+            memberType = (MemberType)i;
+
+            m = Regex.Match(str, @"Units\s+(\d+)");
+            int.TryParse(m.Captures[0].ToString(), out i);
+            units = (Units)i;
+
+            //make a config
+            SConcreteConfig config = new SConcreteConfig()
+            {
+                DesignCodes = designCode,
+                BarType = barType,
+                MemberType = memberType,
+                Units = units,
+            };
+
+            return config;
         }
 
         /***************************************************/

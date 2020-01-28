@@ -28,7 +28,12 @@ using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Base;
 using BH.oM.Common.Materials;
+using BH.Engine.Structure;
 using BH.oM.Structure.SectionProperties;
+using BH.oM.Adapter.SConcrete;
+using BH.oM.Structure.MaterialFragments;
+using System.IO;
+using BH.oM.Structure.SectionProperties.Reinforcement;
 
 namespace BH.Adapter.SConcrete
 {
@@ -42,10 +47,48 @@ namespace BH.Adapter.SConcrete
         //The List<string> in the methods below can be changed to a list of any type of identification more suitable for the toolkit
         //If no ids are provided, the convention is to return all elements of the type
 
-        private List<ISectionProperty> ReadSectionProperties(List<string> ids = null)
+        private ISectionProperty ReadSectionProperty(string filePath = "")
         {
-            //Implement code for reading section properties
-            throw new NotImplementedException();
+            ISectionProperty property = null;
+            Concrete material = ReadMaterial(filePath);
+            List<Reinforcement> reinforcement = ReadReinforcement(filePath);
+
+            string name = Path.GetFileNameWithoutExtension(filePath);
+
+            Dictionary<string, double> values = new Dictionary<string, double>() {
+                { "Cm bcol", 0},
+                { "Cm hcol", 0},
+                { "Cm D", 0},
+            };
+
+            ReadValues(filePath, ref values);
+
+            switch (m_Config.MemberType)
+            {
+                case MemberType.CircColumn:
+                    property = Create.ConcreteCircularSection(values["Cm D"], material, name, reinforcement);
+                    break;
+                case MemberType.RectColumn:
+                    property = Create.ConcreteRectangleSection(values["Cm hcol"], values["Cm bcol"], material, name, reinforcement);
+                    break;
+                case MemberType.LBeam:
+                case MemberType.RectBeam:
+                case MemberType.TBeam:
+                    //Get Beam data
+                    Engine.Reflection.Compute.RecordNote($"SConcrete file contains {m_Config.MemberType.ToString()}!");
+                    break;
+                case MemberType.CShapeWall:
+                case MemberType.IShapeWall:
+                case MemberType.LShapeWall:
+                case MemberType.TShapeWall:
+                    Engine.Reflection.Compute.RecordWarning($"SConcrete file contains {m_Config.MemberType.ToString()} section; could not convert to SectionProperty");
+                    break;
+                default:
+                    Engine.Reflection.Compute.RecordWarning($"Pull of Member Type {m_Config.MemberType.ToString()} not implemented");
+                    break;
+            }
+
+            return null;
         }
 
         /***************************************************/

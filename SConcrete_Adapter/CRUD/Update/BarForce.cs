@@ -41,10 +41,23 @@ namespace BH.Adapter.SConcrete
         /**** Private methods                           ****/
         /***************************************************/
         
-        private bool UpdateObject(BarForce barForce, string filePath) //Move to IUpdate
+        private bool UpdateObject(BarForce barForce, string filePath)
         {
-            //Code for adding additional loads to an existing file                            
-            string[] lines = File.ReadAllLines(filePath);
+            //Code for adding additional loads to an existing file 
+
+            m_Config = ReadSConcreteConfig(filePath);
+
+            string[] lines = null;
+            try
+            {
+                lines = File.ReadAllLines(filePath);
+            }
+            catch
+            {
+                Engine.Reflection.Compute.RecordError($"Could not read file {filePath}");
+                return false;
+            }
+
             StringBuilder lines_out = new StringBuilder();
 
             bool replace = true;
