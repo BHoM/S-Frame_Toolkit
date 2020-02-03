@@ -31,22 +31,20 @@ namespace BH.Engine.SConcrete
                 case MemberType.CircColumn:
                     if (values.ContainsKey("Cm D"))
                     {
-                        Structure.Create.ConcreteCircularSection(values["Cm D"]);
+                        section = Structure.Create.ConcreteCircularSection(values["Cm D"]);
                     }
                     break;
                 case MemberType.RectColumn:
                 case MemberType.LBeam:
                 case MemberType.RectBeam:
                 case MemberType.TBeam:
-                    break;
                 case MemberType.CShapeWall:
                 case MemberType.IShapeWall:
                 case MemberType.LShapeWall:
                 case MemberType.TShapeWall:
-                    Engine.Reflection.Compute.RecordWarning($"SConcrete file contains {config.MemberType.ToString()} section; could not convert to SectionProperty");
-                    break;
                 default:
-                    Engine.Reflection.Compute.RecordWarning($"Pull of Member Type {config.MemberType.ToString()} not implemented");
+                    Engine.Reflection.Compute.RecordWarning($"Pull of Member Type {config.MemberType.ToString()} not implemented. A dummy section has been returned.");
+                    section = Structure.Create.ConcreteCircularSection(1);
                     break;
             }
 

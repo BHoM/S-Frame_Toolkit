@@ -27,6 +27,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Structure.MaterialFragments;
+using System.IO;
+using BH.Engine.SConcrete;
+using BH.oM.Adapter.SConcrete;
 
 namespace BH.Adapter.SConcrete
 {
@@ -42,8 +45,45 @@ namespace BH.Adapter.SConcrete
 
         private Concrete ReadMaterial(string filePath = "")
         {
-            //Implement code for reading materials
-            throw new NotImplementedException();
+            //Create empty section
+            Concrete material = new Concrete();
+
+            //Read file
+            string str = "";
+
+            //check that id is a real file
+            if (File.Exists(filePath))
+            {
+                //read the file into memory
+                str = File.ReadAllText(filePath);
+            }
+            else
+            {
+                Engine.Reflection.Compute.RecordError("Could not read file");
+                return null;
+            }
+
+            //Collect Section Property Values
+            Dictionary<string, double> values = new Dictionary<string, double>() {
+                { "fcu", 0},
+                { "Wc", 0},
+                { "Poisson", 0},
+                { "Ec", 0},
+            };
+
+            ReadValues(str, ref values);
+
+            int cylStr = (int)Math.Round(values["fcu"], 0);
+            int cubeStr = (int)Math.Round(values["fcu"]/0.8, 0);
+
+            material.Name = m_Config.Units == Units.Imperial ? $"{cylStr}psi" : $"C{cylStr}/{cubeStr}"; // default names for US/Euro concrete
+
+            material.YoungsModulus = values["Ec"].FromUnit(m_Config.Units, UnitType.Pressure);
+            material.PoissonsRatio = values["Poisson"];
+            material.Density = values["Wc"].FromUnit(m_Config.Units, UnitType.Density);
+            material.CylinderStrength = values["fcu"].FromUnit(m_Config.Units, UnitType.Pressure) / (m_Config.Units == Units.Imperial ? 1000 : 1);
+            
+            return material;
         }
 
         /***************************************************/

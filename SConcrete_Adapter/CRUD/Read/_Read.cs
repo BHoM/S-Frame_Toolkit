@@ -30,7 +30,7 @@ using BH.oM.Base;
 using BH.oM.Structure.Elements;
 using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.SurfaceProperties;
-using BH.oM.Common.Materials;
+using BH.oM.Physical.Materials;
 using BH.oM.Adapter;
 using BH.oM.Adapter.SConcrete;
 using System.Text.RegularExpressions;
@@ -46,7 +46,13 @@ namespace BH.Adapter.SConcrete
         protected override IEnumerable<IBHoMObject> IRead(Type type, IList ids, ActionConfig actionConfig = null)
         {
             List<IBHoMObject> objects = new List<IBHoMObject>();
-            
+
+            if (ids == null)
+            {
+                IEnumerable<string> allFiles = Directory.EnumerateFiles(m_FolderPath, "*.SCO");
+                ids = allFiles.Select(x => Path.GetFileNameWithoutExtension(x)).ToList();// this ain't workin'.
+            }
+
 
             foreach (object id in ids)
             {
@@ -64,7 +70,7 @@ namespace BH.Adapter.SConcrete
                         objects.Add(ReadSectionProperty(filePath) as IBHoMObject);
                     else if (type == typeof(ISurfaceProperty) || type.GetInterfaces().Contains(typeof(ISurfaceProperty)))
                         objects.Add(ReadSurfaceProperty(filePath) as IBHoMObject);
-                    else if (type == typeof(Material))
+                    else if (type == typeof(Material) || type.GetInterfaces().Contains(typeof(Material)))
                         objects.Add(ReadMaterial(filePath) as IBHoMObject);
                 }
             }
@@ -74,14 +80,14 @@ namespace BH.Adapter.SConcrete
 
         /***************************************************/
 
-        private bool ReadValues(string filePath, ref Dictionary<string, double> values)
+        private bool ReadValues(string str, ref Dictionary<string, double> values)
         {
-            string str = File.ReadAllText(filePath);
-            foreach (string key in values.Keys)
+            List<string> keys = values.Keys.ToList();
+            foreach (string key in keys)
             {
-                Match m = Regex.Match(str, (key + @"\t (\d+)"));
+                Match m = Regex.Match(str, (key + @"\t ([^\s]+)"));
                 float value;
-                float.TryParse(m.Captures[0].ToString(), out value);
+                float.TryParse(m.Groups[1].ToString(), out value);
                 values[key] = value;
             }
 

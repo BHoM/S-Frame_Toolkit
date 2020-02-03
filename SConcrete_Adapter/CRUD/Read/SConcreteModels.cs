@@ -48,7 +48,7 @@ namespace BH.Adapter.SConcrete
         {
             SConcreteModel model = new SConcreteModel();
 
-            model.Section = ReadSectionProperty(filePath);
+            model.Section = (ConcreteSection)ReadSectionProperty(filePath);
             //Tuple<double, double> length = ReadLength(filePath);
             //model.LengthXX = length.Item1;
             //model.LengthYY = length.Item2;

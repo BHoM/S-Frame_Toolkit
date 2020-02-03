@@ -48,30 +48,48 @@ namespace BH.Adapter.SConcrete
         //The List<string> in the methods below can be changed to a list of any type of identification more suitable for the toolkit
         //If no ids are provided, the convention is to return all elements of the type
 
-        private ConcreteSection ReadSectionProperty(string filePath = "")
+        private ISectionProperty ReadSectionProperty(string filePath = "")
         {
             //Create empty section
             ConcreteSection property = null;
 
-            property.Name = Path.GetFileNameWithoutExtension(filePath);
+            string str = "";
+
+            //check that id is a real file
+            if (File.Exists(filePath))
+            {
+                //read the file into memory
+                str = File.ReadAllText(filePath);
+            }
+            else
+            {
+                Engine.Reflection.Compute.RecordError("Could not read file");
+                return null;
+            }
 
             //Gather pre-requisites
             Concrete material = ReadMaterial(filePath);
-            List<Reinforcement> reinforcement = ReadReinforcement(filePath);
+            //List<Reinforcement> reinforcement = ReadReinforcement(filePath);
 
             //Collect Section Property Values
             Dictionary<string, double> values = new Dictionary<string, double>() {
                 { "Cm bcol", 0},
                 { "Cm hcol", 0},
-                { "Cm D", 0}, //TO DO: Add the rest of the dimension values
+                { "Cm D", 0},
+                { "Bm h", 0},
+                { "Bm b", 0},
+                { "Bm bf", 0},
+                { "Bm D", 0}, //TO DO: Add the rest of the dimension values
             };
 
-            ReadValues(filePath, ref values);
+            ReadValues(str, ref values);
 
             property = m_Config.SectionToBHoM(values);
 
+            //property.Name = Path.GetFileNameWithoutExtension(filePath).ToString();
+
             //property.AddReinforcement(reinforcement);
-            //property.Material = material;
+            property.Material = material;
 
             return property;
         }

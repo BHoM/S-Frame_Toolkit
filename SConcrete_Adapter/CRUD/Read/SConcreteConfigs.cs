@@ -63,36 +63,27 @@ namespace BH.Adapter.SConcrete
 
             //search the file for each property of config
 
-            DesignCodes designCode = new DesignCodes();
-            BarType barType = new BarType();
-            MemberType memberType = new MemberType();
-            Units units = new Units();
+            //DesignCodes designCode = new DesignCodes();
+            //BarType barType = new BarType();
+            //MemberType memberType = new MemberType();
+            //Units units = new Units();
 
-            int i;
+            Dictionary<string, double> values = new Dictionary<string, double>() {
+                { "Codes", 0},
+                { "Bar Type", 0},
+                { "Member Type", 0},
+                { "Units", 0},
+            };
 
-            Match m = Regex.Match(str, @"Codes\s+(\d+)");
-            int.TryParse(m.Captures[0].ToString(), out i);
-            designCode = (DesignCodes)i;
-
-            m = Regex.Match(str, @"Bar Type\s+(\d+)");
-            int.TryParse(m.Captures[0].ToString(), out i);
-            barType = (BarType)i;
-
-            m = Regex.Match(str, @"Member Type\s+(\d+)");
-            int.TryParse(m.Captures[0].ToString(), out i);
-            memberType = (MemberType)i;
-
-            m = Regex.Match(str, @"Units\s+(\d+)");
-            int.TryParse(m.Captures[0].ToString(), out i);
-            units = (Units)i;
+            ReadValues(str, ref values);
 
             //make a config
             SConcreteConfig config = new SConcreteConfig()
             {
-                DesignCodes = designCode,
-                BarType = barType,
-                MemberType = memberType,
-                Units = units,
+                DesignCodes = (DesignCodes)values["Codes"],
+                BarType = (BarType)values["Bar Type"],
+                MemberType = (MemberType)values["Member Type"],
+                Units = (Units)values["Units"],
             };
 
             return config;

@@ -50,6 +50,8 @@ namespace BH.oM.Adapter.SConcrete
     {
         Length,
         Force,
-        Moment
+        Moment,
+        Pressure,
+        Density,
     }
 }

@@ -93,6 +93,7 @@
     <Compile Include="Convert\ToS_Frame\Bar.cs" />
     <Compile Include="Convert\ToS_Frame\SConcreteModel.cs" />
     <Compile Include="Convert\ToS_Frame\Panel.cs" />
+    <Compile Include="Convert\FromUnit\Unit.cs" />
     <Compile Include="Convert\ToUnit\Unit.cs" />
     <Compile Include="Create\SConcreteModel.cs" />
     <Compile Include="Create\BarResult.cs" />
