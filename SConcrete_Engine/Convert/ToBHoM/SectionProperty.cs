@@ -31,7 +31,7 @@ namespace BH.Engine.SConcrete
                 case MemberType.CircColumn:
                     if (values.ContainsKey("Cm D"))
                     {
-                        section = Structure.Create.ConcreteCircularSection(values["Cm D"]);
+                        section = Structure.Create.ConcreteCircularSection(values["Cm D"].FromUnit(config.Units, UnitType.Length));
                     }
                     break;
                 case MemberType.RectColumn:
