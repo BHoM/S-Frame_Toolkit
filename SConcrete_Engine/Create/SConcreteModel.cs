@@ -42,6 +42,8 @@ namespace BH.Engine.SConcrete.Create
             return model;
         }
 
+        /***************************************************/
+
         public static SConcreteModel SConcreteModel(this Bar bar, List<BarForce> forces = null)
         {
             SConcreteModel model = bar.SConcreteModel();
@@ -51,6 +53,8 @@ namespace BH.Engine.SConcrete.Create
 
             return model;
         }
+
+        /***************************************************/
 
         public static SConcreteModel SConcreteModel(this ISectionProperty section)
         {
@@ -80,6 +84,8 @@ namespace BH.Engine.SConcrete.Create
             return model;
         }
 
+        /***************************************************/
+
         public static SConcreteModel SConcreteModel(this ISectionProperty section, List<BarForce> forces = null)
         {
             SConcreteModel model = section.SConcreteModel();
@@ -90,5 +96,6 @@ namespace BH.Engine.SConcrete.Create
             return model;
         }
 
+        /***************************************************/
     }
 }

@@ -88,11 +88,11 @@
   <ItemGroup>
     <Compile Include="Convert\AdapterId.cs" />
     <Compile Include="Convert\ToBHoM\SectionProperty.cs" />
-    <Compile Include="Convert\ToS_Frame\SectionProperty.cs" />
-    <Compile Include="Convert\ToS_Frame\BarForce.cs" />
-    <Compile Include="Convert\ToS_Frame\Bar.cs" />
-    <Compile Include="Convert\ToS_Frame\SConcreteModel.cs" />
-    <Compile Include="Convert\ToS_Frame\Panel.cs" />
+    <Compile Include="Query\SectionProperty.cs" />
+    <Compile Include="Convert\ToSConcrete\BarForce.cs" />
+    <Compile Include="Query\Bar.cs" />
+    <Compile Include="Query\SConcreteModel.cs" />
+    <Compile Include="Query\Panel.cs" />
     <Compile Include="Convert\FromUnit\Unit.cs" />
     <Compile Include="Convert\ToUnit\Unit.cs" />
     <Compile Include="Create\SConcreteModel.cs" />
@@ -102,7 +102,6 @@
   <ItemGroup>
     <Folder Include="Compute\" />
     <Folder Include="Modify\" />
-    <Folder Include="Query\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SConcrete_oM\SConcrete_oM.csproj">

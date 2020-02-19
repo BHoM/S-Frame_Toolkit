@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BH.Engine.SConcrete
 {
-    public static partial class Convert
+    public static partial class Query
     {
         /***************************************************/
         /**** Public Methods                            ****/

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BH.Engine.SConcrete
 {
-    public static partial class Convert
+    public static partial class Query
     {
         /***************************************************/
         /**** Public Methods                            ****/
@@ -48,28 +48,6 @@ namespace BH.Engine.SConcrete
                 + "LoadDuration	 2	CohesionC	 .2	Wa EstimateHM	 0	Wa HiModFctrYY	 1.25	Wa HiModFctrZZ	 1.25	Wa PeriodTaYY	 1	Wa PeriodTaZZ	 1	Wa PeriodTL	 .5	Wa PeriodTU	 1	Text10	Value10	Text11	Value11	Text12	Value12	Text13	Value13	Text14	Value14	Text15	Value15	Text16	Value16	Text17	Value17	Text18	Value18	Text19	Value19	Text20	Value20	Text21	Value21	Text22	Value22	Text23	Value23	Text24	Value24	Text25	Value25	Text26	Value26	Text27	Value27	Text28	Value28	Text29	Value29	Text30	Value30";
 
             return data;
-        }
-
-        /***************************************************/
-
-        public static string GetWallPanelData(Panel panel)
-        {
-            string l = "6000";
-            string t = "400";
-            string x0 = "0";
-            string y0 = "3000";
-            string angle = "0";
-            string zonenoa = "1";
-            string zonenob = "2";
-            string vertd = "4";
-            string horzd = "4";
-            string curt = "1";
-            string verts = "400";
-            string horzs = "400";
-            string hooka = "0";
-            string hookb = "0";
-
-            return $" 1	 True	1	 {l}	 {t}	 {x0}    {y0}    {angle}	 {zonenoa}	 {zonenob}	 {vertd}	 {horzd}	 {curt}	 {verts}	 {horzs}	 {hooka}	 {hookb}";
         }
 
         /***************************************************/

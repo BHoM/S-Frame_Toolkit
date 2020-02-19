@@ -17,7 +17,7 @@ namespace BH.Engine.SConcrete
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static ConcreteSection SectionToBHoM(this SConcreteConfig config, Dictionary<string, double> values)
+        public static ConcreteSection ToConcreteSection(this SConcreteConfig config, Dictionary<string, double> values)
         {
             ConcreteSection section = null;
             //Create BHoM Sections
