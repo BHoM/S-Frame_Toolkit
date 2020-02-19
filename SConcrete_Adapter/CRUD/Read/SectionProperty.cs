@@ -62,7 +62,7 @@ namespace BH.Adapter.SConcrete
 
             ReadValues(str, ref values);
 
-            property = m_Config.SectionToBHoM(values);
+            property = m_Config.ToConcreteSection(values);
 
             //property.Name = Path.GetFileNameWithoutExtension(filePath).ToString();
 

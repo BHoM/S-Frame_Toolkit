@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="Convert\AdapterId.cs" />
     <Compile Include="Convert\ToBHoM\SectionProperty.cs" />
+    <Compile Include="Convert\ToSConcrete\Panel.cs" />
     <Compile Include="Query\SectionProperty.cs" />
     <Compile Include="Convert\ToSConcrete\BarForce.cs" />
     <Compile Include="Query\Bar.cs" />
