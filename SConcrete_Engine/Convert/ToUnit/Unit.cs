@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using BH.oM.Reflection.Attributes;
 
 namespace BH.Engine.SConcrete
 {
@@ -13,7 +15,11 @@ namespace BH.Engine.SConcrete
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static double ToUnit(this double quantitySI, Units units = Units.Imperial, UnitType uType = UnitType.Length)
+        [Description("Converts from BHoM SI units to specified S-Concrete units")]
+        [Input("quantity", "The number to convert from SI to specified S-Concrete units")]
+        [Input("units", "The S-Concrete Unit System to convert to. Defaults to Metric (not SI: see S-Concrete documentation)")]
+        [Input("uType", "The type of quantity which is to be converted, i.e. length, e.g. length, force, moment, density, etc.")]
+        public static double ToUnit(this double quantitySI, Units units = Units.Metric, UnitType uType = UnitType.Length)
         {
             if (units == Units.Imperial)
             {
