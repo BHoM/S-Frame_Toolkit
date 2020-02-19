@@ -33,28 +33,6 @@ namespace BH.Adapter.SConcrete
                 {
                     CreateObject(objectToUpdate as dynamic, filePath);
                 }
-                //if (typeof(T) == typeof(BarForce))
-                //{
-                //    BarForce barForce = (BarForce)objectToUpdate;
-                //    string filePath = GetFilePath(barForce, ref exists);
-                //    if (exists)
-                //    {
-                //        UpdateObject(barForce as dynamic, filePath);
-                //    }
-                //}
-                //if (typeof(T) == typeof(IBHoMObject))
-                //{
-                //    IBHoMObject bhObject = (IBHoMObject)objectToUpdate;
-                //    string filePath = GetFilePath(bhObject, ref exists);
-                //    if (exists)
-                //    {
-                //        UpdateObject(bhObject as dynamic, filePath);
-                //    }
-                //    else
-                //    {
-                //        CreateObject(bhObject as dynamic, filePath);
-                //    }
-                //}
             }
 
             return success;
