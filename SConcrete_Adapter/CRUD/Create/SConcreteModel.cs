@@ -122,7 +122,7 @@ namespace BH.Adapter.SConcrete
             {
                 for (int i = 0; i < forces.Count; i++)
                 {
-                    loadText = loadText + forces[i].ToSConcrete(i, m_Config);
+                    loadText = loadText + forces[i].ToSConcrete(i+1, m_Config);
                 }
             }                
 

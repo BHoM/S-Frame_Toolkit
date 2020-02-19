@@ -17,7 +17,7 @@ namespace BH.Engine.SConcrete
         public static string ToSConcrete(this BarForce barForce, int i, SConcreteConfig config)
         {
 
-            string LC = (i+1).ToString("F0");
+            string LC = i.ToString("F0");
             string Nf = (barForce.FX.ToUnit(config.Units, UnitType.Force)).ToString("G");
             string Tf = (barForce.MX.ToUnit(config.Units, UnitType.Moment)).ToString("G");
             string Vfz = (barForce.FZ.ToUnit(config.Units, UnitType.Force)).ToString("G");
