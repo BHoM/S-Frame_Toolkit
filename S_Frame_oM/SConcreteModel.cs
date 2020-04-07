@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This file is part of the Buildings and Habitats object Model (BHoM)
  * Copyright (c) 2015 - 2020, the respective contributors. All rights reserved.
  *
@@ -39,15 +39,15 @@ namespace BH.oM.Adapter.SConcrete
         /**** Properties                                ****/
         /***************************************************/
         
-        public ConcreteSection Section { get; set; } = null;
+        public virtual ConcreteSection Section { get; set; } = null;
 
-        public StructuralUsage1D Usage { get; set; } = StructuralUsage1D.Beam;
+        public virtual StructuralUsage1D Usage { get; set; } = StructuralUsage1D.Beam;
 
-        public Double LengthYY { get; set; } = 0;
+        public virtual Double LengthYY { get; set; } = 0;
 
-        public Double LengthZZ { get; set; } = 0;
+        public virtual Double LengthZZ { get; set; } = 0;
 
-        public List<BarForce> Forces { get; set; } = new List<BarForce>();
+        public virtual List<BarForce> Forces { get; set; } = new List<BarForce>();
 
         /***************************************************/
     }
