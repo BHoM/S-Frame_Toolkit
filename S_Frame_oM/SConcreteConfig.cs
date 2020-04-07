@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This file is part of the Buildings and Habitats object Model (BHoM)
  * Copyright (c) 2015 - 2020, the respective contributors. All rights reserved.
  *
@@ -38,10 +38,10 @@ namespace BH.oM.Adapter.SConcrete
         /**** Properties                                ****/
         /***************************************************/
 
-        public DesignCodes DesignCodes { get; set; } = DesignCodes.ACI_2014;
-        public BarType BarType { get; set; } = BarType.American;
-        public MemberType MemberType { get; set; } = MemberType.RectBeam;
-        public Units Units { get; set; } = Units.Imperial;
+        public virtual DesignCodes DesignCodes { get; set; } = DesignCodes.ACI_2014;
+        public virtual BarType BarType { get; set; } = BarType.American;
+        public virtual MemberType MemberType { get; set; } = MemberType.RectBeam;
+        public virtual Units Units { get; set; } = Units.Imperial;
 
         /***************************************************/
     }
