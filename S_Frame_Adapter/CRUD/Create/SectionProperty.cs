@@ -25,42 +25,54 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BH.oM.Structure.Elements;
+using BH.oM.Adapter.SConcrete;
+using BH.Engine.SConcrete;
+using BH.oM.Structure.SectionProperties;
+using BH.oM.Structure.Constraints;
 using BH.oM.Structure.Results;
-using BH.oM.Geometry;
+using System.IO;
 
-namespace BH.Engine.SConcrete.Create
+namespace BH.Adapter.SConcrete
 {
-    public static partial class Create
+    public partial class SConcrete_Adapter
     {
+
         /***************************************************/
-        /**** Public Methods                            ****/
+        /**** Private methods                           ****/
         /***************************************************/
 
-        public static BarForce BarForce(string name = null, Vector f = null, Vector m = null )
+        private bool CreateCollection(IEnumerable<ISectionProperty> sections)
         {
-            BarForce result = new BarForce()
+            //Create models based on SectionProperties
+
+            List<SConcreteModel> models = new List<SConcreteModel>();
+
+            foreach (ISectionProperty section in sections)
             {
-                ObjectId = name,
-                MX = m.X,
-                MY = m.Y,
-                MZ = m.Z,
-                FX = f.X,
-                FY = f.Y,
-                FZ = f.Z,
-            };
+                if (section.GetType() == typeof(ConcreteSection))
+                {
+                    ConcreteSection cSection = (ConcreteSection)section;
 
-            return result;
+                    StructuralUsage1D usage = StructuralUsage1D.Beam;
+
+                    if (cSection.SectionProfile.Shape == oM.Geometry.ShapeProfiles.ShapeType.Circle)//the only shape not supported by s-concrete beams
+                    {
+                        usage = StructuralUsage1D.Column;
+                    }
+
+                    SConcreteModel model = new SConcreteModel()
+                    {
+                        Name = cSection.Name,
+                        Section = cSection,
+                        Usage = usage,
+                    };
+
+                    models.Add(model);
+                }
+            }
+
+            return CreateCollection(models);
         }
-
-        /***************************************************/
-
-        public static BarForce BarForce(string name = "", BarForce force = null)
-        {
-            force.ObjectId = name;
-
-            return force;
-        }
-
-        /***************************************************/
     }
 }

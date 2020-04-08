@@ -20,45 +20,46 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
+using BH.oM.Adapter.SConcrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BH.oM.Structure.Results;
-using BH.oM.Geometry;
 
-namespace BH.Engine.SConcrete.Create
+namespace BH.Engine.SConcrete
 {
-    public static partial class Create
+    public static partial class Convert
     {
         /***************************************************/
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static BarForce BarForce(string name = null, Vector f = null, Vector m = null )
+        public static double ToUnit(this double quantitySI, Units units = Units.Imperial, UnitType uType = UnitType.Length)
         {
-            BarForce result = new BarForce()
+            if (units == Units.Imperial)
             {
-                ObjectId = name,
-                MX = m.X,
-                MY = m.Y,
-                MZ = m.Z,
-                FX = f.X,
-                FY = f.Y,
-                FZ = f.Z,
-            };
+                switch (uType)
+                {
+                    case UnitType.Length:
+                        return quantitySI / .0254;
+                    case UnitType.Force:
+                        return quantitySI / 4448.22;
+                    case UnitType.Moment:
+                        return quantitySI / 0.3048 / 4448.22;
+                }
+            }
+            else if (units == Units.Metric)
 
-            return result;
-        }
+                switch (uType)
+                {
+                    case UnitType.Length:
+                    case UnitType.Force:
+                    case UnitType.Moment:
+                        return 1 / 1000;
+                }
 
-        /***************************************************/
-
-        public static BarForce BarForce(string name = "", BarForce force = null)
-        {
-            force.ObjectId = name;
-
-            return force;
+            return 1;
         }
 
         /***************************************************/
