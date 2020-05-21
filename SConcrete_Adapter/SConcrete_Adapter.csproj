@@ -59,7 +59,7 @@
     </Reference>
     <Reference Include="Common_oM">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\BHoM\Build\Common_oM.dll</HintPath>
+      <HintPath>..\..\BHoM\Build\Common_oM.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Dimensional_oM">
@@ -102,7 +102,7 @@
     </Reference>
     <Reference Include="Structure_oM">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\BHoM\Build\Structure_oM.dll</HintPath>
+      <HintPath>..\..\BHoM\Build\Structure_oM.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
