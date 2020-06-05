@@ -26,7 +26,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Base;
-using BH.oM.Common.Properties;
 using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.Results;
 using BH.oM.Structure.Elements;

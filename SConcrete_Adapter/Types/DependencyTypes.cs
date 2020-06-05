@@ -21,7 +21,6 @@
  */
 
 using BH.Engine.Base.Objects;
-using BH.oM.Common.Materials;
 using BH.oM.Structure.Elements;
 using BH.oM.Structure.SurfaceProperties;
 using BH.oM.Structure.Constraints;
