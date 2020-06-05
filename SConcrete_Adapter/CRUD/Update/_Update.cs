@@ -27,7 +27,6 @@ using System.IO;
 using System.Threading.Tasks;
 using BH.oM.Structure.Results;
 using BH.oM.Structure.SectionProperties;
-using BH.oM.Common.Materials;
 using BH.oM.Base;
 using BH.oM.Adapter;
 

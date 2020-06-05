@@ -27,7 +27,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Base;
-using BH.oM.Common.Materials;
 using BH.Engine.Structure;
 using BH.oM.Structure.SectionProperties;
 using BH.oM.Adapter.SConcrete;

@@ -27,7 +27,6 @@ using System.Text;
 using System.Threading.Tasks;
 using BH.Adapter;
 using BH.oM.Base;
-using BH.oM.Common;
 using BH.Engine.SConcrete;
 using System.Reflection;
 using System.IO;
