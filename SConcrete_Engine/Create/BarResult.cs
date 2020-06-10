@@ -38,17 +38,7 @@ namespace BH.Engine.SConcrete.Create
 
         public static BarForce BarForce(string name = null, Vector f = null, Vector m = null )
         {
-            BarForce result = new BarForce()
-            {
-                ObjectId = name,
-                MX = m.X,
-                MY = m.Y,
-                MZ = m.Z,
-                FX = f.X,
-                FY = f.Y,
-                FZ = f.Z,
-            };
-
+            BarForce result = new BarForce(name, "", -1, 0, 0, 0, f.X, f.Y, f.Z, m.X, m.Y, m.Z);
             return result;
         }
 
@@ -56,9 +46,8 @@ namespace BH.Engine.SConcrete.Create
 
         public static BarForce BarForce(string name = "", BarForce force = null)
         {
-            force.ObjectId = name;
-
-            return force;
+            BarForce result = new BarForce(name, force.ResultCase, force.ModeNumber, force.TimeStep, force.Position, force.Divisions, force.FX, force.FY, force.FZ, force.MX, force.MY, force.MZ);
+            return result;
         }
 
         /***************************************************/
