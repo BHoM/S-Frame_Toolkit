@@ -32,6 +32,9 @@ using System.Reflection;
 using System.IO;
 using BH.oM.Adapter.SConcrete;
 using BH.oM.Adapter;
+using BH.Engine.Structure;
+using BH.oM.Structure.Elements;
+using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.Results;
 
 namespace BH.Adapter.SConcrete
@@ -83,6 +86,30 @@ namespace BH.Adapter.SConcrete
             if (item.GetType() == typeof(BarForce))
             {
                 filePath = Path.Combine(paths: new string[] { m_FolderPath, ((item as BarForce).ObjectId.ToString() + ".SCO") });
+                exists = File.Exists(filePath);
+                return filePath;
+            }
+
+            if (item.GetType() == typeof(Bar))
+            {
+                Bar bar = item as Bar;
+
+                String name;
+                if (bar.Name != "")
+                    name = bar.Name;
+                else
+                    name = bar.SectionProperty.DescriptionOrName();
+
+                filePath = Path.Combine(paths: new string[] { m_FolderPath, (name + ".SCO") });
+                exists = File.Exists(filePath);
+                return filePath;
+            }
+
+            if (typeof(ISectionProperty).IsAssignableFrom(item.GetType()))
+            {
+                string name = (item as ISectionProperty).DescriptionOrName();
+
+                filePath = Path.Combine(paths: new string[] { m_FolderPath, (name + ".SCO") });
                 exists = File.Exists(filePath);
                 return filePath;
             }
