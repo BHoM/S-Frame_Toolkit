@@ -44,13 +44,11 @@ namespace BH.Engine.SConcrete.Create
         {
             SConcreteModel model = new SConcreteModel();
 
-            String name = "";
+            String name;
             if (bar.Name != "")
                 name = bar.Name;
-            else if (bar.SectionProperty.Name != "")
-                name = bar.SectionProperty.Name;
             else
-                name = "Untitled Section";
+                name = bar.SectionProperty.DescriptionOrName();
 
             if (bar.SectionProperty.GetType() == typeof(ConcreteSection))
             {
@@ -82,7 +80,7 @@ namespace BH.Engine.SConcrete.Create
         {
             if (section.GetType() != typeof(ConcreteSection))
             {
-                Engine.Reflection.Compute.RecordWarning("S-Concrete can only design ConcreteSections. {} has been provided");
+                Engine.Reflection.Compute.RecordWarning($"S-Concrete can only design ConcreteSections. {section.GetType()} has been provided");
                 return null;
             }
 
@@ -98,7 +96,7 @@ namespace BH.Engine.SConcrete.Create
 
             SConcreteModel model = new SConcreteModel()
             {
-                Name = cSection.Name,
+                Name = cSection.DescriptionOrName(),
                 Section = cSection,
                 Usage = usage,
             };
