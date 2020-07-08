@@ -76,12 +76,12 @@ namespace BH.Adapter.SConcrete
             int cylStr = (int)Math.Round(values["fcu"], 0);
             int cubeStr = (int)Math.Round(values["fcu"]/0.8, 0);
 
-            material.Name = m_Config.Units == Units.Imperial ? $"{cylStr}psi" : $"C{cylStr}/{cubeStr}"; // default names for US/Euro concrete
+            material.Name = m_Config.Units == S_Units.Imperial ? $"{cylStr}psi" : $"C{cylStr}/{cubeStr}"; // default names for US/Euro concrete
 
             material.YoungsModulus = values["Ec"].FromUnit(m_Config.Units, UnitType.Pressure);
             material.PoissonsRatio = values["Poisson"];
             material.Density = values["Wc"].FromUnit(m_Config.Units, UnitType.Density);
-            material.CylinderStrength = values["fcu"].FromUnit(m_Config.Units, UnitType.Pressure) / (m_Config.Units == Units.Imperial ? 1000 : 1);
+            material.CylinderStrength = values["fcu"].FromUnit(m_Config.Units, UnitType.Pressure) / (m_Config.Units == S_Units.Imperial ? 1000 : 1);
             
             return material;
         }
