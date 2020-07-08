@@ -42,7 +42,7 @@ namespace BH.Engine.SConcrete
         [Input("quantity", "The number to convert from specified S-Concrete units to SI")]
         [Input("units","The S-Concrete Unit System from which to convert. Defaults to Metric (not SI: see S-Concrete documentation)")]
         [Input("uType","The type of quantity which is to be converted, i.e. length, e.g. length, force, moment, density, etc.")]
-        public static double FromUnit(this double quantity, Units units = Units.Metric, UnitType uType = UnitType.Length)
+        public static double FromUnit(this double quantity, S_Units units = S_Units.Metric, UnitType uType = UnitType.Length)
         {
             return quantity / Convert.ToUnit(1.0, units, uType);
         }

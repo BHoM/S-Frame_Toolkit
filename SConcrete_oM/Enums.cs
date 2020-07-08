@@ -42,7 +42,7 @@ namespace BH.oM.Adapter.SConcrete
         ACI_2014 = 17,
         CSA_2014 = 16
     }
-    public enum Units
+    public enum S_Units
     {
         Imperial = 0,
         Metric

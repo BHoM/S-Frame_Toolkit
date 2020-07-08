@@ -26,6 +26,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BH.Engine.Units;  
 using System.ComponentModel;
 using BH.oM.Reflection.Attributes;
 
@@ -41,14 +42,14 @@ namespace BH.Engine.SConcrete
         [Input("quantity", "The number to convert from SI to specified S-Concrete units")]
         [Input("units", "The S-Concrete Unit System to convert to. Defaults to Metric (not SI: see S-Concrete documentation)")]
         [Input("uType", "The type of quantity which is to be converted, i.e. length, e.g. length, force, moment, density, etc.")]
-        public static double ToUnit(this double quantitySI, Units units = Units.Metric, UnitType uType = UnitType.Length)
+        public static double ToUnit(this double quantitySI, S_Units units = S_Units.Metric, UnitType uType = UnitType.Length)
         {
-            if (units == Units.Imperial)
+            if (units == S_Units.Imperial)
             {
                 switch (uType)
                 {
                     case UnitType.Length: //S-Concrete uses inches
-                        return quantitySI / .0254;
+                        return Units.Convert.ToInch(quantitySI);
                     case UnitType.Force: //S-Concrete uses kip
                         return quantitySI / 4448.22;
                     case UnitType.Moment: //S-Concrete uses kip*ft
@@ -59,7 +60,7 @@ namespace BH.Engine.SConcrete
                         return quantitySI / 16.018;
                 }
             }
-            else if (units == Units.Metric)
+            else if (units == S_Units.Metric)
 
                 switch (uType)
                 {

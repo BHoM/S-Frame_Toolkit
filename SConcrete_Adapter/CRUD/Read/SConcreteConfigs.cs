@@ -82,7 +82,7 @@ namespace BH.Adapter.SConcrete
                 DesignCodes = (DesignCodes)values["Codes"],
                 BarType = (BarType)values["Bar Type"],
                 MemberType = (MemberType)values["Member Type"],
-                Units = (Units)values["Units"],
+                Units = (S_Units)values["Units"],
             };
 
             return config;

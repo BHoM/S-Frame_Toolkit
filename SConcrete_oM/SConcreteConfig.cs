@@ -40,7 +40,7 @@ namespace BH.oM.Adapter.SConcrete
         public virtual DesignCodes DesignCodes { get; set; } = DesignCodes.ACI_2014;
         public virtual BarType BarType { get; set; } = BarType.American;
         public virtual MemberType MemberType { get; set; } = MemberType.RectBeam;
-        public virtual Units Units { get; set; } = Units.Imperial;
+        public virtual S_Units Units { get; set; } = S_Units.Imperial;
 
         /***************************************************/
     }
