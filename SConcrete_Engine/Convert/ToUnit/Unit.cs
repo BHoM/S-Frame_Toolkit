@@ -51,13 +51,13 @@ namespace BH.Engine.SConcrete
                     case UnitType.Length: //S-Concrete uses inches
                         return Units.Convert.ToInch(quantitySI);
                     case UnitType.Force: //S-Concrete uses kip
-                        return quantitySI / 4448.22;
+                        return Units.Convert.ToKilopoundForce(quantitySI);
                     case UnitType.Moment: //S-Concrete uses kip*ft
-                        return quantitySI / 0.3048 / 4448.22;
+                        return Units.Convert.ToKilopoundForceFoot(quantitySI);
                     case UnitType.Pressure: //S-Concrete uses ksi for everything except fcu
-                        return quantitySI / 6894.76;
+                        return Units.Convert.ToKilopoundForcePerSquareInch(quantitySI);
                     case UnitType.Density: //S-Concrete uses lb/ft^3
-                        return quantitySI / 16.018;
+                        return Units.Convert.ToPoundPerCubicFoot(quantitySI);
                 }
             }
             else if (units == S_Units.Metric)
@@ -65,13 +65,13 @@ namespace BH.Engine.SConcrete
                 switch (uType)
                 {
                     case UnitType.Length: //S-Concrete uses mm
-                        return quantitySI / 1000;
+                        return Units.Convert.ToMillimetre(quantitySI);
                     case UnitType.Force: //S-Concrete uses kN
-                        return quantitySI / 1000;
+                        return Units.Convert.ToKilonewton(quantitySI);
                     case UnitType.Moment: //S-Concrete uses kN*m
-                        return quantitySI / 1000;
+                        return Units.Convert.ToKilonewtonMetre(quantitySI);
                     case UnitType.Pressure: //S-Concrete uses MPa
-                        return quantitySI / 1000000;
+                        return Units.Convert.ToNewtonPerSquareMillimetre(quantitySI);
                     case UnitType.Density: //S-Concrete uses kg/m^3
                         return quantitySI / 1;
                 }
