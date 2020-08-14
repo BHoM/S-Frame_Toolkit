@@ -1,0 +1,22 @@
+﻿{
+  "Namespace": {
+    "ToNew": {
+		"BH.oM.Adapter.SConcrete" : "BH.oM.Adapters.SConcrete"
+    },
+    "ToOld": {
+		"BH.oM.Adapters.SConcrete" : "BH.oM.Adapter.SConcrete"
+    }
+  },
+  "Type": {
+    "ToNew": {
+    },
+    "ToOld": {
+    }
+  },
+  "Property": {
+    "ToNew": {
+    },
+    "ToOld": {
+    }
+  }
+}
