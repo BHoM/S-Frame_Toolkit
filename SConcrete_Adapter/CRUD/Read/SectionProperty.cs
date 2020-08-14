@@ -29,11 +29,11 @@ using System.Threading.Tasks;
 using BH.oM.Base;
 using BH.Engine.Structure;
 using BH.oM.Structure.SectionProperties;
-using BH.oM.Adapter.SConcrete;
+using BH.oM.Adapters.SConcrete;
 using BH.oM.Structure.MaterialFragments;
 using System.IO;
 using BH.oM.Structure.SectionProperties.Reinforcement;
-using BH.Engine.SConcrete;
+using BH.Engine.Adapters.SConcrete;
 
 namespace BH.Adapter.SConcrete
 {

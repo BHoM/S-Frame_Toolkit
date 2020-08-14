@@ -20,17 +20,17 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-using BH.oM.Adapter.SConcrete;
+using BH.oM.Adapters.SConcrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
-using BH.Engine.SConcrete;
+using BH.Engine.Adapters.SConcrete;
 using BH.oM.Reflection.Attributes;
 
-namespace BH.Engine.SConcrete
+namespace BH.Engine.Adapters.SConcrete
 {
     public static partial class Convert
     {
