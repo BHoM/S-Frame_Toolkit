@@ -29,7 +29,7 @@ using BH.oM.Base;
 using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.Results;
 
-namespace BH.oM.Adapter.SConcrete
+namespace BH.oM.Adapters.SConcrete
 {
     public class SConcreteConfig : BHoMObject
     {

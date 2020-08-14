@@ -27,10 +27,10 @@ using System.Text;
 using System.Threading.Tasks;
 using BH.Adapter;
 using BH.oM.Base;
-using BH.Engine.SConcrete;
+using BH.Engine.Adapters.SConcrete;
 using System.Reflection;
 using System.IO;
-using BH.oM.Adapter.SConcrete;
+using BH.oM.Adapters.SConcrete;
 using BH.oM.Adapter;
 using BH.Engine.Structure;
 using BH.oM.Structure.Elements;
@@ -55,7 +55,7 @@ namespace BH.Adapter.SConcrete
             SetupComparers();
             SetupDependencies();
             m_AdapterSettings.DefaultPushType = PushType.UpdateOnly;
-            AdapterIdName = BH.Engine.SConcrete.Convert.AdapterIdName;   //Set the "AdapterIdName" to "SoftwareName_id". Generally stored as a constant string in the convert class in the SoftwareName_Engine
+            AdapterIdName = BH.Engine.Adapters.SConcrete.Convert.AdapterIdName;   //Set the "AdapterIdName" to "SoftwareName_id". Generally stored as a constant string in the convert class in the SoftwareName_Engine
 
             if (Active)
             {

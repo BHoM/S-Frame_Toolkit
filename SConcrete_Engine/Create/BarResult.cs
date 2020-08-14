@@ -28,7 +28,7 @@ using System.Threading.Tasks;
 using BH.oM.Structure.Results;
 using BH.oM.Geometry;
 
-namespace BH.Engine.SConcrete.Create
+namespace BH.Engine.Adapters.SConcrete.Create
 {
     public static partial class Create
     {

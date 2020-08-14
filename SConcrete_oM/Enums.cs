@@ -26,7 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BH.oM.Adapter.SConcrete
+namespace BH.oM.Adapters.SConcrete
 {
     public enum DesignCodes
     {

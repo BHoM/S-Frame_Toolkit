@@ -28,8 +28,8 @@ using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Structure.MaterialFragments;
 using System.IO;
-using BH.Engine.SConcrete;
-using BH.oM.Adapter.SConcrete;
+using BH.Engine.Adapters.SConcrete;
+using BH.oM.Adapters.SConcrete;
 
 namespace BH.Adapter.SConcrete
 {
