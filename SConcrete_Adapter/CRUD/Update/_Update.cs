@@ -29,6 +29,8 @@ using BH.oM.Structure.Results;
 using BH.oM.Structure.SectionProperties;
 using BH.oM.Base;
 using BH.oM.Adapter;
+using System.Runtime.CompilerServices;
+using BH.oM.Structure.SectionProperties.Reinforcement;
 
 namespace BH.Adapter.SConcrete
 {
@@ -60,5 +62,12 @@ namespace BH.Adapter.SConcrete
         }
 
         /***************************************************/
+
+        private String ParamReplace(String str, String paramName, Object paramVal)
+        {
+            string pattern = paramName + @"	 [^\s]*";
+            string replacement = $"{paramName}	 {paramVal}";
+            return System.Text.RegularExpressions.Regex.Replace(str, pattern, replacement);
+        }
     }
 }

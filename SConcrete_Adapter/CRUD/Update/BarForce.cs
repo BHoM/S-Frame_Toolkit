@@ -47,7 +47,7 @@ namespace BH.Adapter.SConcrete
 
             m_Config = ReadSConcreteConfig(filePath);
 
-            string[] lines = null;
+            string[] lines;
             try
             {
                 lines = File.ReadAllLines(filePath);

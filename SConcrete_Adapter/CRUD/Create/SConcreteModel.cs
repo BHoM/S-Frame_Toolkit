@@ -62,8 +62,6 @@ namespace BH.Adapter.SConcrete
 
         private string TableIdentifiers(SConcreteModel model)
         {
-            string memberType = model.GetMemberType().ToString("G");
-
             return "@" + Environment.NewLine
                     + "@Object@S-CONCRETE Identifiers@" + Environment.NewLine
                     + "@Table@2@" + Environment.NewLine
@@ -71,7 +69,7 @@ namespace BH.Adapter.SConcrete
                     + "Minor	.1" + Environment.NewLine
                     + $"Codes	 {(int)m_Config.DesignCodes}" + Environment.NewLine
                     + $"Bar Type	 {(int)m_Config.BarType}" + Environment.NewLine
-                    + $"Member Type	 {memberType}" + Environment.NewLine
+                    + $"Member Type	 {(int)model.GetMemberType()}" + Environment.NewLine
                     + $"Units	 {(int)m_Config.Units}" + Environment.NewLine
                     + "Orientation	 0" + Environment.NewLine
                     + @"ID IIh+wBlYGoToe8y8iFOCRXEsa5b4XSl7lG/LFSzg5IwqppG51NQPnq+pMXyyuNu1hP+unQOUHwm1+AXEgPs4UreNkG69CqTRmnDESeRGPGEOrSO2wf1LcjPT1M/C/PVY" + Environment.NewLine

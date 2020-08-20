@@ -48,7 +48,7 @@ namespace BH.Adapter.SConcrete
 
         //Add any applicable constructors here, such as linking to a specific file or anything else as well as linking to that file through the (if existing) com link via the API
 
-        public SConcrete_Adapter(string folderPath = "", bool Active = false)
+        public SConcrete_Adapter(string folderPath = "")
         {
             //Initialization
             Modules.Structure.ModuleLoader.LoadModules(this);
@@ -56,11 +56,8 @@ namespace BH.Adapter.SConcrete
             SetupDependencies();
             m_AdapterSettings.DefaultPushType = PushType.UpdateOnly;
             AdapterIdName = BH.Engine.SConcrete.Convert.AdapterIdName;   //Set the "AdapterIdName" to "SoftwareName_id". Generally stored as a constant string in the convert class in the SoftwareName_Engine
-
-            if (Active)
-            {
-                m_FolderPath = CreateFolder(folderPath);
-            }
+            
+            m_FolderPath = CreateFolder(folderPath);
         }
 
         /***************************************************/
