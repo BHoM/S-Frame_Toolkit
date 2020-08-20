@@ -29,10 +29,10 @@ using BH.oM.Structure.Elements;
 using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.Results;
 using BH.oM.Geometry;
-using BH.oM.Adapter.SConcrete;
+using BH.oM.Adapters.SConcrete;
 using BH.Engine.Structure;
 
-namespace BH.Engine.SConcrete.Create
+namespace BH.Engine.Adapters.SConcrete.Create
 {
     public static partial class Create
     {

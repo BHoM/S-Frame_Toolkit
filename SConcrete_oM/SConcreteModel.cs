@@ -30,7 +30,7 @@ using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.Results;
 using BH.oM.Structure.Elements;
 
-namespace BH.oM.Adapter.SConcrete
+namespace BH.oM.Adapters.SConcrete
 {
     public class SConcreteModel : BHoMObject
     {

@@ -32,7 +32,7 @@ using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.SurfaceProperties;
 using BH.oM.Physical.Materials;
 using BH.oM.Adapter;
-using BH.oM.Adapter.SConcrete;
+using BH.oM.Adapters.SConcrete;
 using System.Text.RegularExpressions;
 
 namespace BH.Adapter.SConcrete

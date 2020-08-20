@@ -30,7 +30,7 @@ using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.Constraints;
 using BH.oM.Structure.Results;
 using System.IO;
-using BH.Engine.SConcrete;
+using BH.Engine.Adapters.SConcrete;
 
 namespace BH.Adapter.SConcrete
 {
