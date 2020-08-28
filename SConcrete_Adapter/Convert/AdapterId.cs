@@ -20,43 +20,17 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-using BH.Engine.Structure;
-using BH.oM.Adapters.SConcrete;
-using BH.oM.Geometry.ShapeProfiles;
-using BH.oM.Structure.Elements;
-using BH.oM.Structure.SectionProperties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BH.Engine.Adapters.SConcrete
+namespace BH.Adapter.SConcrete
 {
-    public static partial class Query
+    public static partial class Convert
     {
-        /***************************************************/
-        /**** Public Methods                            ****/
-        /***************************************************/
-
-        public static MemberType GetMemberType(this ConcreteSection section)
-        {
-            switch (section.SectionProfile.Shape)
-            {
-                case ShapeType.Angle:
-                    return MemberType.LBeam;
-                case ShapeType.Circle:
-                    return MemberType.CircColumn;
-                case ShapeType.Rectangle:
-                    return MemberType.RectBeam;
-                case ShapeType.Tee:
-                    return MemberType.TBeam;
-                default:
-                    return MemberType.RectBeam;
-            }
-
-        }
-
-        /***************************************************/
+        //Key used to find the software in the custom data of created or read objects
+        public const string AdapterIdName = "SConcrete_id";
     }
 }

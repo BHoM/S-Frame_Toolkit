@@ -30,7 +30,7 @@ using BH.Engine.Units;
 using System.ComponentModel;
 using BH.oM.Reflection.Attributes;
 
-namespace BH.Engine.Adapters.SConcrete
+namespace BH.Adapter.SConcrete
 {
     public static partial class Convert
     {
@@ -49,15 +49,15 @@ namespace BH.Engine.Adapters.SConcrete
                 switch (uType)
                 {
                     case UnitType.Length: //S-Concrete uses inches
-                        return Units.Convert.ToInch(quantitySI);
+                        return BH.Engine.Units.Convert.ToInch(quantitySI);
                     case UnitType.Force: //S-Concrete uses kip
-                        return Units.Convert.ToKilopoundForce(quantitySI);
+                        return BH.Engine.Units.Convert.ToKilopoundForce(quantitySI);
                     case UnitType.Moment: //S-Concrete uses kip*ft
-                        return Units.Convert.ToKilopoundForceFoot(quantitySI);
+                        return BH.Engine.Units.Convert.ToKilopoundForceFoot(quantitySI);
                     case UnitType.Pressure: //S-Concrete uses ksi for everything except fcu
-                        return Units.Convert.ToKilopoundForcePerSquareInch(quantitySI);
+                        return BH.Engine.Units.Convert.ToKilopoundForcePerSquareInch(quantitySI);
                     case UnitType.Density: //S-Concrete uses lb/ft^3
-                        return Units.Convert.ToPoundPerCubicFoot(quantitySI);
+                        return BH.Engine.Units.Convert.ToPoundPerCubicFoot(quantitySI);
                 }
             }
             else if (units == S_Units.Metric)
@@ -65,13 +65,13 @@ namespace BH.Engine.Adapters.SConcrete
                 switch (uType)
                 {
                     case UnitType.Length: //S-Concrete uses mm
-                        return Units.Convert.ToMillimetre(quantitySI);
+                        return BH.Engine.Units.Convert.ToMillimetre(quantitySI);
                     case UnitType.Force: //S-Concrete uses kN
-                        return Units.Convert.ToKilonewton(quantitySI);
+                        return BH.Engine.Units.Convert.ToKilonewton(quantitySI);
                     case UnitType.Moment: //S-Concrete uses kN*m
-                        return Units.Convert.ToKilonewtonMetre(quantitySI);
+                        return BH.Engine.Units.Convert.ToKilonewtonMetre(quantitySI);
                     case UnitType.Pressure: //S-Concrete uses MPa
-                        return Units.Convert.ToNewtonPerSquareMillimetre(quantitySI);
+                        return BH.Engine.Units.Convert.ToNewtonPerSquareMillimetre(quantitySI);
                     case UnitType.Density: //S-Concrete uses kg/m^3
                         return quantitySI / 1;
                 }

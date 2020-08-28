@@ -29,7 +29,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BH.Engine.Adapters.SConcrete
+namespace BH.Adapter.SConcrete
 {
     public static partial class Query
     {

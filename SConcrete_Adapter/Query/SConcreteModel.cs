@@ -30,12 +30,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BH.Engine.Adapters.SConcrete
+namespace BH.Adapter.SConcrete
 {
     public static partial class Query
     {
         /***************************************************/
-        /**** Public Methods                            ****/
+        /**** Private Methods                           ****/
         /***************************************************/
 
         public static void GetColumnProfileData(this IProfile profile, SConcreteConfig config, ref double cm_bcol, ref double cm_hcol, ref double cm_D)
@@ -82,10 +82,8 @@ namespace BH.Engine.Adapters.SConcrete
         }
 
         /***************************************************/
-        /**** Private Methods                           ****/
-        /***************************************************/
 
-        private static void GetBeamProfileData(RectangleProfile profile, SConcreteConfig config, ref double bm_h, ref double bm_b, ref double bm_bf, ref double bm_hf)
+        public static void GetBeamProfileData(RectangleProfile profile, SConcreteConfig config, ref double bm_h, ref double bm_b, ref double bm_bf, ref double bm_hf)
         {
             bm_h = profile.Height.ToUnit(config.Units, UnitType.Length);
             bm_b = profile.Width.ToUnit(config.Units, UnitType.Length);            
@@ -93,7 +91,7 @@ namespace BH.Engine.Adapters.SConcrete
 
         /***************************************************/
 
-        private static void GetBeamProfileData(TSectionProfile profile, SConcreteConfig config, ref double bm_h, ref double bm_b, ref double bm_bf, ref double bm_hf)
+        public static void GetBeamProfileData(TSectionProfile profile, SConcreteConfig config, ref double bm_h, ref double bm_b, ref double bm_bf, ref double bm_hf)
         {
             bm_h  = profile.Height.ToUnit(config.Units, UnitType.Length);
             bm_b  = profile.WebThickness.ToUnit(config.Units, UnitType.Length);
@@ -103,7 +101,7 @@ namespace BH.Engine.Adapters.SConcrete
 
         /***************************************************/
 
-        private static void GetBeamProfileData(AngleProfile profile, SConcreteConfig config, ref double bm_h, ref double bm_b, ref double bm_bf, ref double bm_hf)
+        public static void GetBeamProfileData(AngleProfile profile, SConcreteConfig config, ref double bm_h, ref double bm_b, ref double bm_bf, ref double bm_hf)
         {
             bm_h  = profile.Height.ToUnit(config.Units, UnitType.Length);
             bm_b = profile.WebThickness.ToUnit(config.Units, UnitType.Length);
@@ -113,15 +111,15 @@ namespace BH.Engine.Adapters.SConcrete
 
         /***************************************************/
 
-        private static void GetColumnProfileData(RectangleProfile profile, SConcreteConfig config, ref double cm_bcol, ref double cm_hcol, ref double cm_D)
+        public static void GetColumnProfileData(RectangleProfile profile, SConcreteConfig config, ref double cm_bcol, ref double cm_hcol, ref double cm_D)
         {
-            cm_bcol = profile.Height.ToUnit(config.Units, UnitType.Length);
-            cm_hcol = profile.Width.ToUnit(config.Units, UnitType.Length);            
+            cm_hcol = profile.Height.ToUnit(config.Units, UnitType.Length);
+            cm_bcol = profile.Width.ToUnit(config.Units, UnitType.Length);            
         }
 
         /***************************************************/
 
-        private static void GetColumnProfileData(CircleProfile profile, SConcreteConfig config, ref double cm_bcol, ref double cm_hcol, ref double cm_D)
+        public static void GetColumnProfileData(CircleProfile profile, SConcreteConfig config, ref double cm_bcol, ref double cm_hcol, ref double cm_D)
         {
             cm_D = profile.Diameter.ToUnit(config.Units, UnitType.Length);            
         }

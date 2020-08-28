@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of the Buildings and Habitats object Model (BHoM)
  * Copyright (c) 2015 - 2020, the respective contributors. All rights reserved.
  *
@@ -31,50 +31,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BH.Engine.Adapters.SConcrete
+namespace BH.Adapter.SConcrete
 {
-    public static partial class Convert
+    public static partial class Query
     {
         /***************************************************/
-        /**** Public Methods                            ****/
+        /**** Private Methods                           ****/
         /***************************************************/
 
-        public static ConcreteSection ToConcreteSection(this SConcreteConfig config, Dictionary<string, double> values)
+        private static MemberType GetMemberType(this ConcreteSection section)
         {
-            ConcreteSection section = null;
-            //Create BHoM Sections
-
-            // TO DO: Call constructors with the other values
-            // TO DO: Check that dictionary has the keys needed
-            // TO DO: Implement units scaling
-
-            switch (config.MemberType)
+            switch (section.SectionProfile.Shape)
             {
-                case MemberType.CircColumn:
-                    if (values.ContainsKey("Cm D"))
-                    {
-                        section = Structure.Create.ConcreteCircularSection(values["Cm D"].FromUnit(config.Units, UnitType.Length));
-                    }
-                    break;
-                case MemberType.RectColumn:
-                case MemberType.LBeam:
-                case MemberType.RectBeam:
-                case MemberType.TBeam:
-                case MemberType.CShapeWall:
-                case MemberType.IShapeWall:
-                case MemberType.LShapeWall:
-                case MemberType.TShapeWall:
+                case ShapeType.Angle:
+                    return MemberType.LBeam;
+                case ShapeType.Circle:
+                    return MemberType.CircColumn;
+                case ShapeType.Rectangle:
+                    return MemberType.RectBeam;
+                case ShapeType.Tee:
+                    return MemberType.TBeam;
                 default:
-                    Engine.Reflection.Compute.RecordWarning($"Pull of Member Type {config.MemberType.ToString()} not implemented. A dummy section has been returned.");
-                    section = Structure.Create.ConcreteCircularSection(1);
-                    break;
+                    return MemberType.RectBeam;
             }
 
-            return section;
         }
-
 
         /***************************************************/
     }
-
 }

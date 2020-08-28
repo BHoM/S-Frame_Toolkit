@@ -91,22 +91,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Convert\AdapterId.cs" />
-    <Compile Include="Convert\ToBHoM\SectionProperty.cs" />
-    <Compile Include="Convert\ToSConcrete\Panel.cs" />
-    <Compile Include="Query\SectionProperty.cs" />
-    <Compile Include="Convert\ToSConcrete\BarForce.cs" />
-    <Compile Include="Query\Bar.cs" />
-    <Compile Include="Query\SConcreteModel.cs" />
-    <Compile Include="Query\Panel.cs" />
-    <Compile Include="Convert\FromUnit\Unit.cs" />
-    <Compile Include="Convert\ToUnit\Unit.cs" />
     <Compile Include="Create\SConcreteModel.cs" />
     <Compile Include="Create\BarResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Compute\" />
+    <Folder Include="Convert\" />
     <Folder Include="Modify\" />
   </ItemGroup>
   <ItemGroup>

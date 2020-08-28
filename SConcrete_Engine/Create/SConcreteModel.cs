@@ -54,7 +54,7 @@ namespace BH.Engine.Adapters.SConcrete.Create
             {
                 model.Section = (ConcreteSection)bar.SectionProperty;
                 model.LengthYY = model.LengthZZ = bar.Length();
-                model.Usage = bar.GetUsage();
+                model.Usage = bar.IsVertical() ? StructuralUsage1D.Column : StructuralUsage1D.Beam;
                 model.Name = name;
             }
             else Engine.Reflection.Compute.RecordError("Bar must have a ConcreteSection");

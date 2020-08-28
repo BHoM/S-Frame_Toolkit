@@ -30,7 +30,7 @@ using System.ComponentModel;
 using BH.Engine.Adapters.SConcrete;
 using BH.oM.Reflection.Attributes;
 
-namespace BH.Engine.Adapters.SConcrete
+namespace BH.Adapter.SConcrete
 {
     public static partial class Convert
     {

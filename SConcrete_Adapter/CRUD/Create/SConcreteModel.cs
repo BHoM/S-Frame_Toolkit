@@ -72,7 +72,7 @@ namespace BH.Adapter.SConcrete
                     + $"Member Type	 {(int)model.GetMemberType()}" + Environment.NewLine
                     + $"Units	 {(int)m_Config.Units}" + Environment.NewLine
                     + "Orientation	 0" + Environment.NewLine
-                    + @"ID IIh+wBlYGoToe8y8iFOCRXEsa5b4XSl7lG/LFSzg5IwqppG51NQPnq+pMXyyuNu1hP+unQOUHwm1+AXEgPs4UreNkG69CqTRmnDESeRGPGEOrSO2wf1LcjPT1M/C/PVY" + Environment.NewLine
+                    + @"ID	" + Environment.NewLine
                    + "@EndTable@";
         }
 

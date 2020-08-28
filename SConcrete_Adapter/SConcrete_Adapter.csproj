@@ -115,6 +115,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdapterActions\Push.cs" />
+    <Compile Include="Convert\AdapterId.cs" />
+    <Compile Include="Convert\FromUnit\Unit.cs" />
+    <Compile Include="Convert\ToBHoM\SectionProperty.cs" />
+    <Compile Include="Convert\ToSConcrete\BarForce.cs" />
+    <Compile Include="Convert\ToSConcrete\Panel.cs" />
+    <Compile Include="Convert\ToUnit\Unit.cs" />
     <Compile Include="CRUD\Create\SectionProperty.cs" />
     <Compile Include="CRUD\Read\Reinforcement.cs" />
     <Compile Include="CRUD\Read\SConcreteConfigs.cs" />
@@ -127,6 +133,9 @@
     <Compile Include="CRUD\Create\_Create.cs" />
     <Compile Include="CRUD\Delete\_Delete.cs" />
     <Compile Include="CRUD\Update\_Update.cs" />
+    <Compile Include="Query\Panel.cs" />
+    <Compile Include="Query\SConcreteModel.cs" />
+    <Compile Include="Query\SectionProperty.cs" />
     <Compile Include="Types\NextId.cs" />
     <Compile Include="CRUD\Read\Bar.cs" />
     <Compile Include="CRUD\Read\Material.cs" />
@@ -141,7 +150,6 @@
     <ProjectReference Include="..\SConcrete_Engine\SConcrete_Engine.csproj">
       <Project>{625c4a3b-a0ab-4b29-b289-4c439b565eff}</Project>
       <Name>SConcrete_Engine</Name>
-      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\SConcrete_oM\SConcrete_oM.csproj">
       <Project>{f55cc8a5-44cb-4333-bc8a-a0eb6775b1a8}</Project>

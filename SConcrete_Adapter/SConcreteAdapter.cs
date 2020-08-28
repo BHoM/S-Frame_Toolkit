@@ -27,8 +27,6 @@ using System.Text;
 using System.Threading.Tasks;
 using BH.Adapter;
 using BH.oM.Base;
-using BH.Engine.Adapters.SConcrete;
-using System.Reflection;
 using System.IO;
 using BH.oM.Adapters.SConcrete;
 using BH.oM.Adapter;
@@ -56,7 +54,7 @@ namespace BH.Adapter.SConcrete
             SetupDependencies();
             m_AdapterSettings.DefaultPushType = PushType.UpdateOnly;
 
-            AdapterIdName = BH.Engine.Adapters.SConcrete.Convert.AdapterIdName;   //Set the "AdapterIdName" to "SoftwareName_id". Generally stored as a constant string in the convert class in the SoftwareName_Engine
+            AdapterIdName = Convert.AdapterIdName;   //Set the "AdapterIdName" to "SoftwareName_id". Generally stored as a constant string in the convert class in the SoftwareName_Engine
 
              m_FolderPath = CreateFolder(folderPath);
         }

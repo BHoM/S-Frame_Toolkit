@@ -63,7 +63,7 @@ namespace BH.Adapter.SConcrete
 
         /***************************************************/
 
-        private String ParamReplace(String str, String paramName, Object paramVal)
+        private string ParamReplace(string str, string paramName, Object paramVal)
         {
             string pattern = paramName + @"	 [^\s]*";
             string replacement = $"{paramName}	 {paramVal}";
