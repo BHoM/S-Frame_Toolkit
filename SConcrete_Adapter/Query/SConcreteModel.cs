@@ -38,16 +38,30 @@ namespace BH.Adapter.SConcrete
         /**** Private Methods                           ****/
         /***************************************************/
 
-        public static void GetColumnProfileData(this IProfile profile, SConcreteConfig config, ref double cm_bcol, ref double cm_hcol, ref double cm_D)
+        public static void IGetColumnProfileData(this IProfile profile, SConcreteConfig config, ref double cm_bcol, ref double cm_hcol, ref double cm_D)
         {
-            GetColumnProfileData(profile as dynamic, config, ref cm_bcol, ref cm_hcol, ref cm_D);
+            try
+            {
+                GetColumnProfileData(profile as dynamic, config, ref cm_bcol, ref cm_hcol, ref cm_D);       
+            }
+            catch
+            {
+                return;
+            }
         }
 
         /***************************************************/
 
-        public static void GetBeamProfileData(this IProfile profile, SConcreteConfig config, ref double bm_h, ref double bm_b, ref double bm_bf, ref double bm_hf)
+        public static void IGetBeamProfileData(this IProfile profile, SConcreteConfig config, ref double bm_h, ref double bm_b, ref double bm_bf, ref double bm_hf)
         {
-            GetBeamProfileData(profile as dynamic, config, ref bm_h, ref bm_b, ref bm_bf, ref bm_hf);
+            try
+            {
+                GetBeamProfileData(profile as dynamic, config, ref bm_h, ref bm_b, ref bm_bf, ref bm_hf);
+            }
+            catch
+            {
+                return;
+            }
         }
 
         /***************************************************/

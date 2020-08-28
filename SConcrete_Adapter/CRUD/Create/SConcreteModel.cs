@@ -103,10 +103,10 @@ namespace BH.Adapter.SConcrete
             switch (model.Usage)
             {
                 case StructuralUsage1D.Column:
-                    model.Section.SectionProfile.GetColumnProfileData(m_Config, ref cm_bcol, ref cm_hcol, ref cm_D);
+                    model.Section.SectionProfile.IGetColumnProfileData(m_Config, ref cm_bcol, ref cm_hcol, ref cm_D);
                     break;
                 case StructuralUsage1D.Beam:
-                    model.Section.SectionProfile.GetBeamProfileData(m_Config, ref bm_h, ref bm_b, ref bm_bf, ref bm_hf);
+                    model.Section.SectionProfile.IGetBeamProfileData(m_Config, ref bm_h, ref bm_b, ref bm_bf, ref bm_hf);
                     break;
                 default:
                     Engine.Reflection.Compute.RecordError("Member type not implemented");

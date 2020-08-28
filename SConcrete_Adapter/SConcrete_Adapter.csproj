@@ -126,7 +126,7 @@
     <Compile Include="CRUD\Read\SConcreteConfigs.cs" />
     <Compile Include="CRUD\Read\SConcreteModels.cs" />
     <Compile Include="CRUD\Read\SurfaceProperty.cs" />
-    <Compile Include="CRUD\Update\Bar.cs" />
+    <Compile Include="CRUD\Update\SectionProperty.cs" />
     <Compile Include="CRUD\Update\BarForce.cs" />
     <Compile Include="CRUD\Create\Bar.cs" />
     <Compile Include="CRUD\Create\SConcreteModel.cs" />
