@@ -21,7 +21,7 @@
  */
 
 using BH.oM.Adapters.SConcrete;
-using BH.oM.Geometry.ShapeProfiles;
+using BH.oM.Spatial.ShapeProfiles;
 using System;
 using BH.oM.Structure.Elements;
 using BH.oM.Structure.SectionProperties;
