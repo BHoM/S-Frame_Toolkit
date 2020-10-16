@@ -89,7 +89,7 @@ namespace BH.Engine.Adapters.SConcrete.Create
 
             StructuralUsage1D usage = StructuralUsage1D.Beam;
 
-            if (cSection.SectionProfile.Shape == oM.Geometry.ShapeProfiles.ShapeType.Circle)//the only shape not supported by s-concrete beams
+            if (cSection.SectionProfile.Shape == oM.Spatial.ShapeProfiles.ShapeType.Circle)//the only shape not supported by s-concrete beams
             {
                 usage = StructuralUsage1D.Column;
             }
